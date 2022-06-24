@@ -36,3 +36,5 @@ class Cliente(models.Model):
     direccion = models.CharField("Direccion", max_length=50)
     dni = models.CharField("DNI", max_length=8)
     email = models.EmailField(blank=True, null=True)
+
+    #hola
