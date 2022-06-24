@@ -37,4 +37,4 @@ class Cliente(models.Model):
     dni = models.CharField("DNI", max_length=8)
     email = models.EmailField(blank=True, null=True)
 
-    #hola
+
