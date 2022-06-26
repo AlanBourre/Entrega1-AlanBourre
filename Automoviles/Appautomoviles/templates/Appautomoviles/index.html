@@ -15,7 +15,7 @@
             <td>Modelo</td>
             <td>Tipo</td>
             <td>Color</td>
-            <td>Precio</td>
+            <td>Precio $</td>
         </thead>
         {% for auto in automovil %}
         <tr> <!--- tr = table row -->
@@ -23,7 +23,7 @@
             <td> {{auto.modelo}} </td>
             <td> {{auto.get_tipo_display}} </td>
             <td> {{auto.color}} </td>
-            <td> {{auto.precio}} </td>
+            <td> ${{auto.precio}} </td>
         </tr>
         {% endfor %}
     </table>
