@@ -15,3 +15,7 @@ def personal(request):
 def cliente(request):
     cliente = Cliente.objects.all()
     return render(request, "Appautomoviles/cliente.html", {"cliente": cliente})
+
+def base(request):
+
+    return render(request, "Appautomoviles/base.html", {})
