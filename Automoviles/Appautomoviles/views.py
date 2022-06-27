@@ -22,6 +22,21 @@ def automovil(request):
 
 def formulario_cliente(request):
 
+    if request.method == "GET":
+        return render(request, "Appautomoviles/formulario_cliente.html", {})
+
+    elif request.method == "POST":
+
+        info_formulario = request.POST
+        cliente = Cliente(info_formulario["nombre"], info_formulario["apellido"])
+
+        cliente.save()
+
+        return render(request, "Appautomoviles/formulario_cliente.html", {})
+
+    else:
+        return render(request, "Appautomoviles/formulario_cliente.html", {})
+
     return render(request, "Appautomoviles/formulario_cliente.html", {})
 
 

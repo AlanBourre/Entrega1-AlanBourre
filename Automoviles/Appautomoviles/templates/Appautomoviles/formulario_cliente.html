@@ -11,15 +11,15 @@ Crear Cliente - App Automoviles
 <form action="" method="post">
     {% csrf_token %}
 
-    <p>Nombre: <input type="text" name="nombre" id=""> </p>
+    <p>Nombre: <input type="text" name="nombre" id="" maxlength="30"> </p>
 
-    <p>Apellido: <input type="text" name="apellido" id=""> </p>
+    <p>Apellido: <input type="text" name="apellido" id="" maxlength="30"> </p>
 
-    <p>CUIL: <input type="number" name="cuil" id="" min="0"> </p>
+    <p>CUIL: <input type="number" name="cuil" id="" min="0" maxlength="13"> </p>
 
-    <p>Direccion: <input type="text" name="direccion" id=""> </p>
+    <p>Direccion: <input type="text" name="direccion" id="" maxlength="50"> </p>
 
-    <p>DNI: <input type="number" name="dni" id="" min="0"> </p>
+    <p>DNI: <input type="number" name="dni" id="" min="0" maxlength="8"> </p>
 
     <p>Email: <input type="email" name="email" id=""> </p>
 
