@@ -20,7 +20,7 @@ def automovil(request):
     automovil = Automovil.objects.all()
     return render(request, "Appautomoviles/automovil.html", {"automovil": automovil})
 
-def formulario(request):
+def formulario_cliente(request):
 
     return render(request, "Appautomoviles/formulario_cliente.html", {})
 
