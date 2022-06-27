@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal</title>
+</head>
+<body>
+    <h1>Personal: </h1>
+    <h2>Este es el personal que hay</h2>
+    <table>
+        <thead>
+            <td>Nombre</td>  <!-- table data -->
+            <td>Apellido</td>
+            <td>DNI</td>
+            <td>Email</td>            
+        </thead>
+        {% for persona in personal %}
+        <tr> <!--- tr = table row -->
+            <td> {{persona.nombre}} </td>
+            <td> {{persona.apellido}} </td>
+            <td> {{persona.dni}} </td>
+            <td> {{persona.email}} </td>            
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
