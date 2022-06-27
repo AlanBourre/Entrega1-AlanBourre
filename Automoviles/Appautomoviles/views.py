@@ -16,6 +16,10 @@ def cliente(request):
     cliente = Cliente.objects.all()
     return render(request, "Appautomoviles/cliente.html", {"cliente": cliente})
 
+def automovil(request):
+    automovil = Automovil.objects.all()
+    return render(request, "Appautomoviles/automovil.html", {"automovil": automovil})
+
 def base(request):
 
     return render(request, "Appautomoviles/base.html", {})
