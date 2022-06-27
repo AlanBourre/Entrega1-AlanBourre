@@ -22,16 +22,16 @@ def automovil(request):
 
 def formulario_cliente(request):
 
-    if request.method == "POST":
+    if request.method == "POST":  #POST
 
         info_formulario = request.POST
-        cliente = Cliente(info_formulario["nombre"], info_formulario["apellido"])
+        cliente = Cliente(nombre=info_formulario["nombre"], apellido=info_formulario["apellido"], cuil=info_formulario["cuil"], direccion=info_formulario["direccion"], dni=int(info_formulario["dni"]), email=info_formulario["email"])
 
         cliente.save()
 
-        return redirect("index")
+        return redirect("cliente")
 
-    else:
+    else:  #GET Y OTROS
         return render(request, "Appautomoviles/formulario_cliente.html", {})
 
     return render(request, "Appautomoviles/formulario_cliente.html", {})
