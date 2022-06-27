@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from .models import *
 
 def index(request):
@@ -22,17 +22,14 @@ def automovil(request):
 
 def formulario_cliente(request):
 
-    if request.method == "GET":
-        return render(request, "Appautomoviles/formulario_cliente.html", {})
-
-    elif request.method == "POST":
+    if request.method == "POST":
 
         info_formulario = request.POST
         cliente = Cliente(info_formulario["nombre"], info_formulario["apellido"])
 
         cliente.save()
 
-        return render(request, "Appautomoviles/formulario_cliente.html", {})
+        return redirect("index")
 
     else:
         return render(request, "Appautomoviles/formulario_cliente.html", {})
