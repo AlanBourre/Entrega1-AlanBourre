@@ -4,6 +4,7 @@ from . models import *
 
 class AutomovilAdmin(admin.ModelAdmin):
     list_display = ("marca", "modelo", "tipo", "color", "precio")
+    search_fields = ("marca", "precio")
 
 class PersonalAdmin(admin.ModelAdmin):
     list_display = ("nombre", "apellido", "dni", "email")
