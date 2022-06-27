@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, render
 from .models import *
+from .forms import *
 
 def index(request):
     automovil = Automovil.objects.all()
@@ -32,9 +33,10 @@ def formulario_cliente(request):
         return redirect("cliente")
 
     else:  #GET Y OTROS
-        return render(request, "Appautomoviles/formulario_cliente.html", {})
 
-    return render(request, "Appautomoviles/formulario_cliente.html", {})
+        formularioVacio = NuevoCliente()
+
+        return render(request, "Appautomoviles/formulario_cliente.html", {"formularioVacio": formularioVacio})
 
 
 def base(request):
