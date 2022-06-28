@@ -7,11 +7,11 @@ Buscar Automovil - App Automoviles
 
 {% block contenidoPagina %}
 
-<p><b>Buscar Automovil: </b> 
-    <form method="post">
-        {% csrf_token %}
+<h1 class="text-center mt-3">Buscar automovil:</h1> 
+<form method="post" class="d-flex flex-column align-items-center mt-3">
+    {% csrf_token %}
     
-        <input type="text" name="marca" id="" maxlength="30">
+    <input type="text" name="marca" id="" maxlength="30">
 
     <!-- <p>Apellido: <input type="text" name="apellido" id="" maxlength="30"> </p>
 
@@ -23,18 +23,32 @@ Buscar Automovil - App Automoviles
 
     <p>Email: <input type="email" name="email" id=""> </p> -->
     
-        <input type="submit" value="Buscar">
-    </form> 
-</p>
+    <input class="mt-2" type="submit" value="Buscar">
+</form> 
 
-<p><b>Resultados: </b></p> 
-<ul>
-    {% for auto in automoviles %}
-        <li>
-            {{ auto.marca }} [{{ auto.modelo }}]
-        </li>
-    {% endfor %}
-</ul>
+<table class="table table-dark table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Marca</th>   <!-- table data -->
+            <th scope="col">Modelo</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Precio $</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for auto in automovil %}
+        <tr> <!--- tr = table row -->
+            <td class="table-light"> {{auto.marca}} </td>
+            <td class="table-light"> {{auto.modelo}} </td>
+            <td class="table-light"> {{auto.get_tipo_display}} </td>
+            <td class="table-light"> {{auto.color}} </td>
+            <td class="table-light"> ${{auto.precio}} </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>                          
+
 
 
 {% endblock %}

@@ -47,6 +47,43 @@ def formulario_cliente(request):
 
     #     return render(request, "Appautomoviles/formulario_cliente.html", {"formularioVacio": formularioVacio})
 
+def formulario_automovil(request):
+
+    if request.method == "POST":  #POST
+
+        formulario = FormAutomovil(request.POST)
+
+        if formulario.is_valid():
+
+            formulario.save()
+
+            return HttpResponseRedirect(reverse("automovil"))
+
+
+    else:
+        formulario = FormAutomovil()
+    contexto = {"form": formulario}
+    return render(request, "Appautomoviles/formulario_automovil.html", contexto)
+
+def formulario_personal(request):
+
+    if request.method == "POST":  #POST
+
+        formulario = FormPersonal(request.POST)
+
+        if formulario.is_valid():
+
+            formulario.save()
+
+            return HttpResponseRedirect(reverse("personal"))
+
+
+    else:
+        formulario = FormPersonal()
+    contexto = {"form": formulario}
+    return render(request, "Appautomoviles/formulario_personal.html", contexto)
+
+
 def buscar_automovil(request):
 
     if request.method == "POST":
