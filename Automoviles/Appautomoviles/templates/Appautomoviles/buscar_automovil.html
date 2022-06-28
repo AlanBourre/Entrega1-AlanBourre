@@ -7,48 +7,36 @@ Buscar Automovil - App Automoviles
 
 {% block contenidoPagina %}
 
-<h1 class="text-center mt-3">Buscar automovil:</h1> 
-<form method="post" class="d-flex flex-column align-items-center mt-3">
-    {% csrf_token %}
-    
-    <input type="text" name="marca" id="" maxlength="30">
+<h1 class="text-center mt-3">Buscar automovil: </h1>
+    <form method="post" class="d-flex flex-column align-items-center mt-3">
+        {% csrf_token %} 
 
-    <!-- <p>Apellido: <input type="text" name="apellido" id="" maxlength="30"> </p>
+        <input type="text" name="marca" id="" maxlength="30" placeholder="Buscar">
+        <input class="mt-2" type="submit"value="Buscar">
+    </form>
 
-    <p>CUIL: <input type="text" name="cuil" id="" maxlength="13"> </p>
-
-    <p>Direccion: <input type="text" name="direccion" id="" maxlength="50"> </p>
-
-    <p>DNI: <input type="number" name="dni" id="" min="0" maxlength="8"> </p>
-
-    <p>Email: <input type="email" name="email" id=""> </p> -->
-    
-    <input class="mt-2" type="submit" value="Buscar">
-</form> 
-
-<table class="table table-dark table-striped">
+<!--Resultado Busqueda -->
+<table class="table table-dark mt-3">
     <thead>
-        <tr>
-            <th scope="col">Marca</th>   <!-- table data -->
-            <th scope="col">Modelo</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Tipo</th>
-            <th scope="col">Precio $</th>
-        </tr>
+      <tr>
+        <th scope="col">Marca</th>
+        <th scope="col">Modelo</th>
+        <th scope="col">Tipo</th>
+        <th scope="col">Color</th>
+        <th scope="col">Precio</th>
+      </tr>
     </thead>
     <tbody>
-        {% for auto in automovil %}
-        <tr> <!--- tr = table row -->
-            <td class="table-light"> {{auto.marca}} </td>
-            <td class="table-light"> {{auto.modelo}} </td>
-            <td class="table-light"> {{auto.get_tipo_display}} </td>
-            <td class="table-light"> {{auto.color}} </td>
-            <td class="table-light"> ${{auto.precio}} </td>
-        </tr>
-        {% endfor %}
+     {%for auto in automoviles%}   
+      <tr>
+        <td class="table-light">{{auto.marca}}</td>
+        <td class="table-light">{{auto.modelo}}</td>
+        <td class="table-light">{{auto.get_tipo_display}}</td>
+        <td class="table-light">{{auto.color}}</td>
+        <td class="table-light">${{auto.precio}}</td>
+      </tr>
+      {%endfor%}
     </tbody>
-</table>                          
-
-
+  </table>
 
 {% endblock %}
