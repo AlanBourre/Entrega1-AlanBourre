@@ -1,0 +1,31 @@
+{% extends "Appautomoviles/base.html" %}
+{% load static %}
+
+{% block tituloPagina %}
+Buscar Automovil - App Automoviles
+{% endblock %}
+
+{% block contenidoPagina %}
+
+<p><b>Buscar Automovil: </b> 
+    <form method="post">
+        {% csrf_token %}
+    
+        <input type="text" name="marca" id="" maxlength="30">
+
+    <!-- <p>Apellido: <input type="text" name="apellido" id="" maxlength="30"> </p>
+
+    <p>CUIL: <input type="text" name="cuil" id="" maxlength="13"> </p>
+
+    <p>Direccion: <input type="text" name="direccion" id="" maxlength="50"> </p>
+
+    <p>DNI: <input type="number" name="dni" id="" min="0" maxlength="8"> </p>
+
+    <p>Email: <input type="email" name="email" id=""> </p> -->
+    
+        <input type="submit" value="Buscar">
+    </form> 
+</p>
+
+
+{% endblock %}

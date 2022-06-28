@@ -47,6 +47,12 @@ def formulario_cliente(request):
 
     #     return render(request, "Appautomoviles/formulario_cliente.html", {"formularioVacio": formularioVacio})
 
+def busqueda_automoviles(request):
+
+    automoviles = []  #Automovil.objects.all()
+
+    return render(request, "Appautomoviles/busqueda_automoviles.html", {"automoviles": automoviles})
+
 
 def base(request):
 
