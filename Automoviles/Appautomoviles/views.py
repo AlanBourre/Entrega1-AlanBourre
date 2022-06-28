@@ -1,6 +1,8 @@
 from django.shortcuts import redirect, render
 from .models import *
 from .forms import *
+from django.http import HttpResponseRedirect
+from django.urls import reverse
 
 def index(request):
     automovil = Automovil.objects.all()
@@ -25,18 +27,25 @@ def formulario_cliente(request):
 
     if request.method == "POST":  #POST
 
-        info_formulario = request.POST
-        cliente = Cliente(nombre=info_formulario["nombre"], apellido=info_formulario["apellido"], cuil=info_formulario["cuil"], direccion=info_formulario["direccion"], dni=int(info_formulario["dni"]), email=info_formulario["email"])
+        formulario = FormCliente(request.POST)
 
-        cliente.save()
+        if formulario.is_valid():
 
-        return redirect("cliente")
+            formulario.save()
 
-    else:  #GET Y OTROS
+            return HttpResponseRedirect(reverse("cliente"))
 
-        formularioVacio = NuevoCliente()
 
-        return render(request, "Appautomoviles/formulario_cliente.html", {"formularioVacio": formularioVacio})
+    else:
+        formulario = FormCliente()
+    contexto = {"form": formulario}
+    return render(request, "Appautomoviles/formulario_cliente.html", contexto)
+
+    # else:  #GET Y OTROS
+
+    #     formularioVacio = NuevoCliente()
+
+    #     return render(request, "Appautomoviles/formulario_cliente.html", {"formularioVacio": formularioVacio})
 
 
 def base(request):

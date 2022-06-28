@@ -8,11 +8,11 @@ Crear Cliente - App Automoviles
 {% block contenidoPagina %}
 
 <h2>Crea un cliente nuevo:</h2>
-<form action="" method="post">
+<form method="post">
     {% csrf_token %}
     {{ form.as_p }}
-    {% comment %}
-    <p>Nombre: <input type="text" name="nombre" id="" maxlength="30"> </p>
+    
+    <!-- <p>Nombre: <input type="text" name="nombre" id="" maxlength="30"> </p>
 
     <p>Apellido: <input type="text" name="apellido" id="" maxlength="30"> </p>
 
@@ -22,9 +22,9 @@ Crear Cliente - App Automoviles
 
     <p>DNI: <input type="number" name="dni" id="" min="0" maxlength="8"> </p>
 
-    <p>Email: <input type="email" name="email" id=""> </p>
-    {% endcomment %}
-    <input type="submit" value="Crear cliente">
+    <p>Email: <input type="email" name="email" id=""> </p> -->
+    
+    <input type="submit" value="Añadir cliente">
 </form>
 
 {% endblock %}
