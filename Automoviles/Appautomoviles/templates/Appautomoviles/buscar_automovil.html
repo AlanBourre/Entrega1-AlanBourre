@@ -27,5 +27,14 @@ Buscar Automovil - App Automoviles
     </form> 
 </p>
 
+<p><b>Resultados: </b></p> 
+<ul>
+    {% for auto in automoviles %}
+        <li>
+            {{ auto.marca }} [{{ auto.modelo }}]
+        </li>
+    {% endfor %}
+</ul>
+
 
 {% endblock %}

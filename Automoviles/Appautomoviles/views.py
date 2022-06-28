@@ -47,11 +47,21 @@ def formulario_cliente(request):
 
     #     return render(request, "Appautomoviles/formulario_cliente.html", {"formularioVacio": formularioVacio})
 
-def busqueda_automoviles(request):
+def buscar_automovil(request):
 
-    automoviles = []  #Automovil.objects.all()
+    if request.method == "POST":
 
-    return render(request, "Appautomoviles/busqueda_automoviles.html", {"automoviles": automoviles})
+        marca = request.POST["marca"]
+
+        automoviles = Automovil.objects.filter(marca__icontains=marca) 
+
+        return render(request, "Appautomoviles/buscar_automovil.html", {"automoviles": automoviles})
+
+    
+    else:
+        automoviles = []  #Automovil.objects.all()
+
+        return render(request, "Appautomoviles/buscar_automovil.html", {"automoviles": automoviles})
 
 
 def base(request):
