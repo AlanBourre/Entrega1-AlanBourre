@@ -37,6 +37,11 @@ def login_request(request):
 
     return render(request, "Appautomoviles/login.html", {"form": form})
 
+def logout_request(request):
+    
+    logout(request)
+    return redirect("index")
+
 def register_request(request):
 
     if request.method == "POST":
@@ -65,7 +70,6 @@ def register_request(request):
     #form= UserRegisterForm() #este sirve para editarlo a nuestra manera
 
     return render(request, "Appautomoviles/register.html", {"form": form})
-
 
 def personal(request):
     personal = Personal.objects.all()
