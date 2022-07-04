@@ -10,6 +10,7 @@ urlpatterns = [
     path("formulario_automovil/", views.formulario_automovil, name="formulario_automovil"),
     path("formulario_personal/", views.formulario_personal, name="formulario_personal"),
     path("buscar_automovil/", views.buscar_automovil, name="buscar_automovil"),
-    
+    path("eliminar_automovil/<auto_id>", views.eliminar_automovil, name="eliminar_automovil"),
+    path("editar_automovil/<auto_id>", views.editar_automovil, name="editar_automovil"),    
     #path("base/", views.base),
 ]

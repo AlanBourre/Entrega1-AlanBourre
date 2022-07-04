@@ -20,6 +20,7 @@ Automoviles - App Automoviles
                                 <td>Tipo</td>
                                 <td>Color</td>
                                 <td>Precio $</td>
+                                <td>Acciones</td>
                             </thead>
                             {% for auto in automovil %}
                             <tr> <!--- tr = table row -->
@@ -28,6 +29,10 @@ Automoviles - App Automoviles
                                 <td> {{auto.get_tipo_display}} </td>
                                 <td> {{auto.color}} </td>
                                 <td> ${{auto.precio}} </td>
+                                <td>
+                                    <a href="{% url 'editar_automovil' auto.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                    <a href="{% url 'eliminar_automovil' auto.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
+                                </td>
                             </tr>
                             {% endfor %}
                         </table>                                   

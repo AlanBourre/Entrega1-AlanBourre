@@ -7,7 +7,7 @@ class Automovil(models.Model):
         (1, "Sedan"),
         (2, "Suv"),
         (3, "Hatchback"),
-        (4, "Deportivos"),
+        (4, "Deportivo"),
         (5, "Van"),
         (6, "Pick up")
     )

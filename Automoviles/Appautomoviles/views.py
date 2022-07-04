@@ -83,6 +83,39 @@ def formulario_personal(request):
     contexto = {"form": formulario}
     return render(request, "Appautomoviles/formulario_personal.html", contexto)
 
+def eliminar_automovil(request, auto_id):
+
+    automovil = Automovil.objects.get(id=auto_id)
+    automovil.delete()
+
+    return redirect("automovil")
+
+def editar_automovil(request, auto_id):
+
+    automovil = Automovil.objects.get(id=auto_id)
+    
+    if request.method == "POST":
+        
+        formulario = FormAutomovil(request.POST)
+
+        if formulario.is_valid():
+
+            info_automovil = formulario.cleaned_data
+
+            automovil.marca = info_automovil["marca"]
+            automovil.modelo = info_automovil["modelo"]
+            automovil.tipo = info_automovil["tipo"]
+            automovil.color = info_automovil["color"]
+            automovil.precio = info_automovil["precio"]
+            automovil.save()
+
+            return redirect("automovil")
+
+    #get
+    formulario = FormAutomovil(initial= {"marca": automovil.marca, "modelo": automovil.modelo, "tipo": automovil.tipo,"color": automovil.color, "precio": automovil.precio})
+    contexto = {"form": formulario}
+
+    return render(request, "Appautomoviles/formulario_automovil.html", contexto)
 
 def buscar_automovil(request):
 
