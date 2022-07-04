@@ -11,8 +11,20 @@ Automoviles - App Automoviles
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-8">
-                <button class=" mt-3 btn btn-secondary ms-7"><a href="{%url 'buscar_automovil'%}">Buscar Automovil</a></button>
-                    <p><h1 class="text-center"><b>Automoviles:</b></h1></p>                
+                    <p><h1 class="text-center"><b>Automoviles:</b></h1></p>
+                    <br>
+                    <div class="row gx-5 justify-content-center">
+                        <div class="col-lg-12">
+                            <form class="d-flex my-2 my-lg-0" action="" method="post">
+                                {% csrf_token %}
+                                <input class="flex-grow-0 form-control mr-sm-2" type="search" name="search" placeholder="Buscar por marca" aria-label="Search">
+                                <button class="btn btn-outline-success text-nowrap ms-3 my-2 my-sm-0" type="submit"> <i class="bi bi-search"></i> Buscar</button>
+                                <a class="btn btn-outline-success text-nowrap ms-3 my-2 my-sm-0" href="{% url 'formulario_automovil' %}"> <i class="bi bi-plus-lg"></i> Añadir automovil</a>
+
+                            </form>
+                        </div>
+                    </div>
+                    <br>             
                         <table class="table table-dark table-striped">
                             <thead>
                                 <td>Marca</td>  <!-- table data -->
@@ -40,7 +52,6 @@ Automoviles - App Automoviles
         </div>
     </div>
 
-    <button class=" mt-3 btn btn-secondary ms-7"><a href="{%url 'formulario_automovil'%}">Añadir Automovil</a></button>
 </section>
 
 {% endblock %}

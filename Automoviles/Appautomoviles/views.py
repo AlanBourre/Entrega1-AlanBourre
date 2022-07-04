@@ -20,8 +20,18 @@ def cliente(request):
     return render(request, "Appautomoviles/cliente.html", {"cliente": cliente})
 
 def automovil(request):
+    if request.method == "POST":
+
+        search = request.POST["search"]
+
+        if search != "":
+            automovil = Automovil.objects.filter(marca__icontains=search).values()
+
+            return render(request,"Appautomoviles/automovil.html",{"automovil":automovil, "search":True, "busqueda":search})
+
     automovil = Automovil.objects.all()
-    return render(request, "Appautomoviles/automovil.html", {"automovil": automovil})
+
+    return render(request,"Appautomoviles/automovil.html",{"automovil":automovil})
 
 def formulario_cliente(request):
 
