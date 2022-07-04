@@ -3,6 +3,8 @@ from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth import login, logout, authenticate
 
 def index(request):
     automovil = Automovil.objects.all()
@@ -10,6 +12,30 @@ def index(request):
     cliente = Cliente.objects.all()
     contexto = {"automovil": automovil, "personal": personal, "cliente": cliente} 
     return render(request, "Appautomoviles/index.html", contexto)
+
+def login_request(request):
+
+    if request.method == "POST":
+
+        form = AuthenticationForm(request, data=request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password")
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect("index")
+            else:
+                return redirect("login")
+        else:
+            return redirect("login")
+
+    form= AuthenticationForm()
+
+    return render(request, "Appautomoviles/login.html", {"form": form})
 
 def personal(request):
     personal = Personal.objects.all()
@@ -50,12 +76,6 @@ def formulario_cliente(request):
         formulario = FormCliente()
     contexto = {"form": formulario}
     return render(request, "Appautomoviles/formulario_cliente.html", contexto)
-
-    # else:  #GET Y OTROS
-
-    #     formularioVacio = NuevoCliente()
-
-    #     return render(request, "Appautomoviles/formulario_cliente.html", {"formularioVacio": formularioVacio})
 
 def formulario_automovil(request):
 
@@ -142,7 +162,6 @@ def buscar_automovil(request):
         automoviles = []  #Automovil.objects.all()
 
         return render(request, "Appautomoviles/buscar_automovil.html", {"automoviles": automoviles})
-
 
 def base(request):
 
