@@ -3,7 +3,7 @@ from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 def index(request):
@@ -42,6 +42,7 @@ def register_request(request):
     if request.method == "POST":
 
         form = UserCreationForm(request.POST)
+     #   form = UserCreationForm(request.POST)
 
         if form.is_valid():
 
@@ -61,6 +62,7 @@ def register_request(request):
         return render(request, "Appautomoviles/register.html", {"form": form})
 
     form= UserCreationForm()
+    #form= UserRegisterForm() #este sirve para editarlo a nuestra manera
 
     return render(request, "Appautomoviles/register.html", {"form": form})
 
