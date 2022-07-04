@@ -4,6 +4,7 @@ from .forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
 
+
 def index(request):
     automovil = Automovil.objects.all()
     personal = Personal.objects.all()
