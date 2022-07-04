@@ -3,7 +3,7 @@ from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 def index(request):
@@ -36,6 +36,34 @@ def login_request(request):
     form= AuthenticationForm()
 
     return render(request, "Appautomoviles/login.html", {"form": form})
+
+def register_request(request):
+
+    if request.method == "POST":
+
+        form = UserCreationForm(request.POST)
+
+        if form.is_valid():
+
+            username = form.cleaned_data.get("username")
+            password = form.cleaned_data.get("password1")
+
+            form.save()
+
+            user = authenticate(username=username, password=password)
+
+            if user is not None:
+                login(request, user)
+                return redirect("index")
+            else:
+                return redirect("login")            
+
+        return render(request, "Appautomoviles/register.html", {"form": form})
+
+    form= UserCreationForm()
+
+    return render(request, "Appautomoviles/register.html", {"form": form})
+
 
 def personal(request):
     personal = Personal.objects.all()
