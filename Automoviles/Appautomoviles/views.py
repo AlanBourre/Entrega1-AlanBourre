@@ -6,6 +6,7 @@ from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
 
 
 def index(request):
@@ -73,6 +74,7 @@ def register_request(request):
 
     return render(request, "Appautomoviles/register.html", {"form": form})
 
+@login_required
 def personal(request):
 
     if request.method == "POST":
