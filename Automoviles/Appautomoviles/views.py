@@ -5,6 +5,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login, logout, authenticate
+from django.db.models import Q
 
 
 def index(request):
@@ -73,12 +74,34 @@ def register_request(request):
     return render(request, "Appautomoviles/register.html", {"form": form})
 
 def personal(request):
+
+    if request.method == "POST":
+
+        search = request.POST["search"]
+
+        if search != "":
+            personal = Personal.objects.filter( Q(nombre__icontains=search) | Q(apellido__icontains=search) ).values()
+
+            return render(request,"Appautomoviles/personal.html",{"personal":personal, "search":True, "busqueda":search})
+
     personal = Personal.objects.all()
-    return render(request, "Appautomoviles/personal.html", {"personal": personal})
+
+    return render(request,"Appautomoviles/personal.html",{"personal":personal})
 
 def cliente(request):
+
+    if request.method == "POST":
+
+        search = request.POST["search"]
+
+        if search != "":
+            cliente = Cliente.objects.filter( Q(nombre__icontains=search) | Q(apellido__icontains=search) ).values()
+
+            return render(request,"Appautomoviles/cliente.html",{"cliente":cliente, "search":True, "busqueda":search})
+
     cliente = Cliente.objects.all()
-    return render(request, "Appautomoviles/cliente.html", {"cliente": cliente})
+
+    return render(request,"Appautomoviles/cliente.html",{"cliente":cliente})
 
 def automovil(request):
     if request.method == "POST":
@@ -155,6 +178,20 @@ def eliminar_automovil(request, auto_id):
 
     return redirect("automovil")
 
+def eliminar_cliente(request, client_id):
+
+    cliente = Cliente.objects.get(id=client_id)
+    cliente.delete()
+
+    return redirect("cliente")
+
+def eliminar_personal(request, persona_id):
+
+    personal = Personal.objects.get(id=persona_id)
+    personal.delete()
+
+    return redirect("personal")
+
 def editar_automovil(request, auto_id):
 
     automovil = Automovil.objects.get(id=auto_id)
@@ -181,6 +218,60 @@ def editar_automovil(request, auto_id):
     contexto = {"form": formulario}
 
     return render(request, "Appautomoviles/formulario_automovil.html", contexto)
+
+def editar_cliente(request, client_id):
+
+    cliente = Cliente.objects.get(id=client_id)
+    
+    if request.method == "POST":
+        
+        formulario = FormCliente(request.POST)
+
+        if formulario.is_valid():
+
+            info_cliente = formulario.cleaned_data
+
+            cliente.nombre = info_cliente["nombre"]
+            cliente.apellido = info_cliente["apellido"]
+            cliente.cuil = info_cliente["cuil"]
+            cliente.direccion = info_cliente["direccion"]
+            cliente.dni = info_cliente["dni"]
+            cliente.email = info_cliente["email"]
+            cliente.save()
+
+            return redirect("cliente")
+
+    #get
+    formulario = FormCliente(initial= {"nombre": cliente.nombre, "apellido": cliente.apellido, "cuil": cliente.cuil,"direccion": cliente.direccion, "dni": cliente.dni, "email": cliente.email})
+    contexto = {"form": formulario}
+
+    return render(request, "Appautomoviles/formulario_cliente.html", contexto)
+
+def editar_personal(request, persona_id):
+
+    personal = Personal.objects.get(id=persona_id)
+    
+    if request.method == "POST":
+        
+        formulario = FormPersonal(request.POST)
+
+        if formulario.is_valid():
+
+            info_personal = formulario.cleaned_data
+
+            personal.nombre = info_personal["nombre"]
+            personal.apellido = info_personal["apellido"]
+            personal.dni = info_personal["dni"]
+            personal.email = info_personal["email"]
+            personal.save()
+
+            return redirect("personal")
+
+    #get
+    formulario = FormPersonal(initial= {"nombre": personal.nombre, "apellido": personal.apellido, "dni": personal.dni, "email": personal.email})
+    contexto = {"form": formulario}
+
+    return render(request, "Appautomoviles/formulario_personal.html", contexto)
 
 def buscar_automovil(request):
 

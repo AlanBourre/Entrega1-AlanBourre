@@ -15,6 +15,10 @@ urlpatterns = [
     path("formulario_personal/", views.formulario_personal, name="formulario_personal"),
     path("buscar_automovil/", views.buscar_automovil, name="buscar_automovil"),
     path("eliminar_automovil/<auto_id>", views.eliminar_automovil, name="eliminar_automovil"),
-    path("editar_automovil/<auto_id>", views.editar_automovil, name="editar_automovil"),    
+    path("editar_automovil/<auto_id>", views.editar_automovil, name="editar_automovil"),
+    path("eliminar_cliente/<client_id>", views.eliminar_cliente, name="eliminar_cliente"),
+    path("editar_cliente/<client_id>", views.editar_cliente, name="editar_cliente"),
+    path("eliminar_personal/<persona_id>", views.eliminar_personal, name="eliminar_personal"),
+    path("editar_personal/<persona_id>", views.editar_personal, name="editar_personal"),    
     #path("base/", views.base),
 ]
