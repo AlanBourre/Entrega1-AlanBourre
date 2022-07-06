@@ -26,8 +26,9 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'automovil' %}">Automoviles</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'personal' %}">Personal</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'cliente' %}">Clientes</a></li>
-
+                        {% if user.is_authenticated %}
+                            <li class="nav-item"><a class="nav-link" href="{% url 'cliente' %}">Clientes</a></li>
+                        {% endif %}
                         {% if user.is_authenticated %}
                             <li class="nav-item"><p class="text-light my-2 mx-2"> <i class="bi bi-person-circle"></i> Hola, <b>{{ user.username }}!</b> </p> </li>
                             <li class="nav-item"><a class="btn btn-primary" href="{% url 'logout' %}">Cerrar Sesión</a></li>

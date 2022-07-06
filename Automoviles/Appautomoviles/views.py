@@ -7,6 +7,7 @@ from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
+from django.contrib.admin.views.decorators import staff_member_required
 
 
 def index(request):
@@ -74,7 +75,6 @@ def register_request(request):
 
     return render(request, "Appautomoviles/register.html", {"form": form})
 
-@login_required
 def personal(request):
 
     if request.method == "POST":
@@ -90,6 +90,7 @@ def personal(request):
 
     return render(request,"Appautomoviles/personal.html",{"personal":personal})
 
+@staff_member_required
 def cliente(request):
 
     if request.method == "POST":
@@ -119,6 +120,7 @@ def automovil(request):
 
     return render(request,"Appautomoviles/automovil.html",{"automovil":automovil})
 
+@staff_member_required
 def formulario_cliente(request):
 
     if request.method == "POST":  #POST
@@ -180,6 +182,7 @@ def eliminar_automovil(request, auto_id):
 
     return redirect("automovil")
 
+@staff_member_required
 def eliminar_cliente(request, client_id):
 
     cliente = Cliente.objects.get(id=client_id)
@@ -249,6 +252,7 @@ def editar_cliente(request, client_id):
 
     return render(request, "Appautomoviles/formulario_cliente.html", contexto)
 
+@staff_member_required
 def editar_personal(request, persona_id):
 
     personal = Personal.objects.get(id=persona_id)
@@ -262,15 +266,15 @@ def editar_personal(request, persona_id):
             info_personal = formulario.cleaned_data
 
             personal.nombre = info_personal["nombre"]
-            personal.apellido = info_personal["apellido"]
-            personal.dni = info_personal["dni"]
+            personal.apellido = info_personal["apellido"]            
             personal.email = info_personal["email"]
+            personal.telefono = info_personal["telefono"]
             personal.save()
 
             return redirect("personal")
 
     #get
-    formulario = FormPersonal(initial= {"nombre": personal.nombre, "apellido": personal.apellido, "dni": personal.dni, "email": personal.email})
+    formulario = FormPersonal(initial= {"nombre": personal.nombre, "apellido": personal.apellido, "email": personal.email, "telefono": personal.telefono})
     contexto = {"form": formulario}
 
     return render(request, "Appautomoviles/formulario_personal.html", contexto)

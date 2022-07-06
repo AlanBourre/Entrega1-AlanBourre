@@ -22,8 +22,8 @@ class Automovil(models.Model):
 class Personal(models.Model):
     nombre = models.CharField("Nombre", max_length=30)
     apellido = models.CharField("Apellido", max_length=30)
-    dni = models.CharField("DNI", max_length=8)
     email = models.EmailField(blank=True, null=True)
+    telefono = models.CharField("Telefono", max_length=15) #AGREGADO
 
     class Meta:
         verbose_name_plural = "Personal"

@@ -27,17 +27,17 @@ Personal - App Automoviles
                     <table class="table table-dark table-striped">
                         <thead>
                             <td>Nombre</td>  <!-- table data -->
-                            <td>Apellido</td>
-                            <td>DNI</td>
+                            <td>Apellido</td>                           
                             <td>Email</td> 
+                            <td>Telefono</td>
                             <td>Acciones</td>           
                         </thead>
                         {% for persona in personal %}
                         <tr> <!--- tr = table row -->
                             <td> {{persona.nombre}} </td>
-                            <td> {{persona.apellido}} </td>
-                            <td> {{persona.dni}} </td>
+                            <td> {{persona.apellido}} </td>                           
                             <td> {{persona.email}} </td>  
+                            <td> {{persona.telefono}} </td>  
                             <td>
                                 <a href="{% url 'editar_personal' persona.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
                                 <a href="{% url 'eliminar_personal' persona.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>

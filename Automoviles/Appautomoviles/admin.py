@@ -7,7 +7,7 @@ class AutomovilAdmin(admin.ModelAdmin):
     search_fields = ("marca", "precio")
 
 class PersonalAdmin(admin.ModelAdmin):
-    list_display = ("nombre", "apellido", "dni", "email")
+    list_display = ("nombre", "apellido", "email", "telefono")
 
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ("nombre", "apellido", "cuil", "direccion", "dni", "email")

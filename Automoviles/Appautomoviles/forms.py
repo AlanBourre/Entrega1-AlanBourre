@@ -19,7 +19,7 @@ class FormAutomovil(ModelForm):
 class FormPersonal(ModelForm):
     class Meta():
         model = Personal
-        fields = ("nombre", "apellido", "dni", "email")
+        fields = ("nombre", "apellido", "email", "telefono")
 
 class UserRegisterForm(UserCreationForm):
 
