@@ -46,12 +46,38 @@ def logout_request(request):
     logout(request)
     return redirect("index")
 
+@login_required
+def editar_perfil(request):
+
+    user = request.user
+
+    if request.method == "POST":
+        
+        form = UserEditForm(request.POST)
+
+        if form.is_valid():
+
+            info = form.cleaned_data
+            user.email = info["email"]
+            user.first_name = info["first_name"]
+            user.last_name = info["last_name"]
+
+            user.save()
+            
+
+            return redirect("index")
+
+    else:
+        form = UserEditForm(initial = {"email":user.email, "first_name": user.first_name, "last_name": user.last_name})
+
+    return render(request, "Appautomoviles/editar_perfil.html", {"form": form}) 
+
 def register_request(request):
 
     if request.method == "POST":
 
-        form = UserCreationForm(request.POST)
-     #   form = UserCreationForm(request.POST)
+        # form = UserCreationForm(request.POST)
+        form = UserRegisterForm(request.POST)
 
         if form.is_valid():
 
@@ -70,8 +96,8 @@ def register_request(request):
 
         return render(request, "Appautomoviles/register.html", {"form": form})
 
-    form= UserCreationForm()
-    #form= UserRegisterForm() #este sirve para editarlo a nuestra manera
+    # form= UserCreationForm()
+    form= UserRegisterForm() #este sirve para editarlo a nuestra manera
 
     return render(request, "Appautomoviles/register.html", {"form": form})
 
@@ -139,6 +165,7 @@ def formulario_cliente(request):
     contexto = {"form": formulario}
     return render(request, "Appautomoviles/formulario_cliente.html", contexto)
 
+@staff_member_required
 def formulario_automovil(request):
 
     if request.method == "POST":  #POST
@@ -157,6 +184,7 @@ def formulario_automovil(request):
     contexto = {"form": formulario}
     return render(request, "Appautomoviles/formulario_automovil.html", contexto)
 
+@staff_member_required
 def formulario_personal(request):
 
     if request.method == "POST":  #POST
@@ -175,6 +203,7 @@ def formulario_personal(request):
     contexto = {"form": formulario}
     return render(request, "Appautomoviles/formulario_personal.html", contexto)
 
+@staff_member_required
 def eliminar_automovil(request, auto_id):
 
     automovil = Automovil.objects.get(id=auto_id)
@@ -189,7 +218,8 @@ def eliminar_cliente(request, client_id):
     cliente.delete()
 
     return redirect("cliente")
-
+    
+@staff_member_required
 def eliminar_personal(request, persona_id):
 
     personal = Personal.objects.get(id=persona_id)
@@ -197,6 +227,7 @@ def eliminar_personal(request, persona_id):
 
     return redirect("personal")
 
+@staff_member_required
 def editar_automovil(request, auto_id):
 
     automovil = Automovil.objects.get(id=auto_id)
@@ -224,6 +255,7 @@ def editar_automovil(request, auto_id):
 
     return render(request, "Appautomoviles/formulario_automovil.html", contexto)
 
+@staff_member_required
 def editar_cliente(request, client_id):
 
     cliente = Cliente.objects.get(id=client_id)
