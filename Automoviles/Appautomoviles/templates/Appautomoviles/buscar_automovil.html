@@ -23,6 +23,9 @@ Buscar Automovil - App Automoviles
         <th scope="col">Modelo</th>
         <th scope="col">Tipo</th>
         <th scope="col">Color</th>
+        <th scope="col">Condicion</th>
+        <th scope="col">Año</th>
+        <th scope="col">Kilometros</th>
         <th scope="col">Precio</th>
       </tr>
     </thead>
@@ -33,6 +36,9 @@ Buscar Automovil - App Automoviles
         <td class="table-light">{{auto.modelo}}</td>
         <td class="table-light">{{auto.get_tipo_display}}</td>
         <td class="table-light">{{auto.color}}</td>
+        <td class="table-light">{{auto.get_condicion_display}}</td>
+        <td class="table-light">{{auto.anio}}</td>
+        <td class="table-light">{{auto.kms}}</td>
         <td class="table-light">${{auto.precio}}</td>
       </tr>
       {%endfor%}

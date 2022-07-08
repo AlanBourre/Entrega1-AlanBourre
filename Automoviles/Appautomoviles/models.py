@@ -14,6 +14,13 @@ class Automovil(models.Model):
     )
     tipo = models.PositiveSmallIntegerField("Tipo", choices=TIPOS)
     color = models.CharField("Color", max_length=15)
+    CONDICION = (
+        (1, "Nuevo"),
+        (2, "Usado"),
+    )
+    condicion = models.PositiveSmallIntegerField("Condicion", choices=CONDICION)
+    anio = models.CharField("Año", max_length=4)
+    kms = models.FloatField("Kilometros")
     precio = models.FloatField("Precio $")
 
     class Meta:

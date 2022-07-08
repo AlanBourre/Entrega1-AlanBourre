@@ -14,7 +14,7 @@ class FormCliente(ModelForm):
 class FormAutomovil(ModelForm):
     class Meta():
         model = Automovil
-        fields = ("marca", "modelo", "tipo", "color", "precio")
+        fields = ("marca", "modelo", "tipo", "color","condicion","anio","kms", "precio")
 
 class FormPersonal(ModelForm):
     class Meta():

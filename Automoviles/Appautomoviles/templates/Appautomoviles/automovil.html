@@ -10,7 +10,7 @@ Automoviles - App Automoviles
 <section class="bg-light py-5">
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-8">
+            <div class="col-lg-9">
                     <p><h1 class="text-center"><b>Automoviles:</b></h1></p>
                     <br>
                     <div class="row gx-5 justify-content-center">
@@ -30,6 +30,9 @@ Automoviles - App Automoviles
                                 <td>Modelo</td>
                                 <td>Tipo</td>
                                 <td>Color</td>
+                                <td>Condicion</td>
+                                <td>Año</td>
+                                <td>Kilometros</td>
                                 <td>Precio $</td>
                                 <td>Acciones</td>
                             </thead>
@@ -39,6 +42,9 @@ Automoviles - App Automoviles
                                 <td> {{auto.modelo}} </td>
                                 <td> {{auto.get_tipo_display}} </td>
                                 <td> {{auto.color}} </td>
+                                <td> {{auto.get_condicion_display}} </td>
+                                <td> {{auto.anio}} </td>
+                                <td> {{auto.kms}} </td>
                                 <td> ${{auto.precio}} </td>
                                 <td>
                                     <a href="{% url 'editar_automovil' auto.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>

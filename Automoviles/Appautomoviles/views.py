@@ -284,13 +284,16 @@ def editar_automovil(request, auto_id):
             automovil.modelo = info_automovil["modelo"]
             automovil.tipo = info_automovil["tipo"]
             automovil.color = info_automovil["color"]
+            automovil.condicion = info_automovil["condicion"]
+            automovil.anio = info_automovil["anio"]
+            automovil.kms = info_automovil["kms"]
             automovil.precio = info_automovil["precio"]
             automovil.save()
 
             return redirect("automovil")
 
     #get
-    formulario = FormAutomovil(initial= {"marca": automovil.marca, "modelo": automovil.modelo, "tipo": automovil.tipo,"color": automovil.color, "precio": automovil.precio})
+    formulario = FormAutomovil(initial= {"marca": automovil.marca, "modelo": automovil.modelo, "tipo": automovil.tipo,"color": automovil.color,"condicion": automovil.condicion,"anio": automovil.anio, "kms": automovil.kms, "precio": automovil.precio})
     contexto = {"form": formulario}
 
     return render(request, "Appautomoviles/formulario_automovil.html", contexto)
