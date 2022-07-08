@@ -12,7 +12,7 @@ Editar Perfil - App Automoviles
 <br>
 <h5 class="text-center mt-3">Estas editando al usuario "{{ user.username }}":</h5>
 <br>
-<form method="post">
+<form method="post" enctype="multipart/form-data">
     {% csrf_token %}
 
     <form>
