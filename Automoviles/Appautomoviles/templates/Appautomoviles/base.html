@@ -27,10 +27,18 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'automovil' %}">Automoviles</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'personal' %}">Personal</a></li>
                         {% if user.is_authenticated %}
+                            {% if user.is_staff %}
                             <li class="nav-item"><a class="nav-link" href="{% url 'cliente' %}">Clientes</a></li>
+                            {% endif %}
                         {% endif %}
                         {% if user.is_authenticated %}
-                            <li class="nav-item"><p class="text-light my-2 mx-2"> <i class="bi bi-person-circle"></i> Hola, <b>{{ user.username }}!</b> </p> </li>
+                            {% if user.avatar.imagen.url %}
+                                <img class="rounded" src="{{ user.avatar.imagen.url }}" alt="" srcset="" style="height: 40px;">
+                            {% else %}
+                                <i class="bi bi-person-circle text-light my-2"></i>
+                            {% endif %}
+                            <!-- <i class="bi bi-person-circle text-light"></i> -->
+                            <li class="nav-item"><p class="text-light my-2 mx-2">Hola, <b>{{ user.username }}!</b> </p> </li>
                             <li class="nav-item"><a class="btn btn-primary" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                         {% else %}
                             <li class="nav-item"><a class="btn btn-primary mx-2" href="{% url 'login' %}">Iniciar Sesión</a></li>

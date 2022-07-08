@@ -17,3 +17,4 @@ class ClienteAdmin(admin.ModelAdmin):
 admin.site.register(Automovil, AutomovilAdmin)
 admin.site.register(Personal, PersonalAdmin)
 admin.site.register(Cliente, ClienteAdmin)
+admin.site.register(Avatar)

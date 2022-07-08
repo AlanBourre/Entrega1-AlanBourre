@@ -9,13 +9,22 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 
+def entrada(request):
+    return redirect("index")
 
 def index(request):
     automovil = Automovil.objects.all()
     personal = Personal.objects.all()
     cliente = Cliente.objects.all()
-    contexto = {"automovil": automovil, "personal": personal, "cliente": cliente} 
+    contexto = {"automovil": automovil, "personal": personal, "cliente": cliente}
+
+    # if request.user.is_authenticated:
+    #     avatar= Avatar.objects.get(usuario= request.user)
+    #     return render(request, "Appautomoviles/index.html", contexto,{"avatar": avatar})
+
     return render(request, "Appautomoviles/index.html", contexto)
+
+
 
 def login_request(request):
 
@@ -71,6 +80,35 @@ def editar_perfil(request):
         form = UserEditForm(initial = {"email":user.email, "first_name": user.first_name, "last_name": user.last_name})
 
     return render(request, "Appautomoviles/editar_perfil.html", {"form": form}) 
+
+
+
+@login_required
+def agregar_avatar(request):
+    
+    if request.method == "POST":
+            
+        form = FormAvatar(request.POST, request.FILES)
+
+        if form.is_valid():
+
+            user = User.objects.get(username=request.user.username) # usuario con el que estamos loggueados
+
+            avatar = Avatar(usuario=user, imagen=form.cleaned_data["imagen"])
+
+            avatar.save()
+
+            # avatar = Avatar()
+            # avatar.usuario = request.user
+            # avatar.imagen = form.cleaned_data["imagen"]
+            # avatar.save()
+
+            return redirect("index")
+
+    else:
+        form = FormAvatar()
+    
+    return render(request, "Appautomoviles/agregar_avatar.html", {"form": form})
 
 def register_request(request):
 

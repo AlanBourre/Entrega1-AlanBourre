@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import *
 
 class Automovil(models.Model):
     marca = models.CharField("Marca", max_length=20)
@@ -38,3 +39,7 @@ class Cliente(models.Model):
     email = models.EmailField(blank=True, null=True)
 
 
+class Avatar(models.Model):
+
+    usuario = models.OneToOneField(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to="avatar/", blank=True, null=True)
