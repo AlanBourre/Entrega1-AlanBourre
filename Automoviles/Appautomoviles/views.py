@@ -24,7 +24,9 @@ def index(request):
 
     return render(request, "Appautomoviles/index.html", contexto)
 
-
+def about(request):
+    
+    return render(request, 'Appautomoviles/about.html')
 
 def login_request(request):
 
