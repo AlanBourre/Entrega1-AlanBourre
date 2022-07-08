@@ -12,9 +12,12 @@ class PersonalAdmin(admin.ModelAdmin):
 class ClienteAdmin(admin.ModelAdmin):
     list_display = ("nombre", "apellido", "cuil", "direccion", "dni", "email")
 
+class AvatarAdmin(admin.ModelAdmin):
+    list_display = ("usuario", "imagen")
+
 
 
 admin.site.register(Automovil, AutomovilAdmin)
 admin.site.register(Personal, PersonalAdmin)
 admin.site.register(Cliente, ClienteAdmin)
-admin.site.register(Avatar)
+admin.site.register(Avatar, AvatarAdmin)
