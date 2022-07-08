@@ -37,7 +37,7 @@
                             {% else %}
                                 <i class="bi bi-person-circle text-light my-2"></i>
                             {% endif %}                           
-                            <li class="nav-item"><p class="text-light my-2 mx-2">Hola, <b>{{ user.username }}!</b> </p> </li>
+                            <li class="nav-item"><p class="text-light mx-2"><a class="btn btn-primary" href="{% url 'editar_perfil' %}">Hola, <b>{{ user.username }}!</b> </a>  </p> </li>
                             <li class="nav-item"><a class="btn btn-primary" href="{% url 'logout' %}">Cerrar Sesión</a></li>
                         {% else %}
                             <li class="nav-item"><a class="btn btn-primary mx-2" href="{% url 'login' %}">Iniciar Sesión</a></li>
