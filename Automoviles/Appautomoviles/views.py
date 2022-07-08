@@ -373,3 +373,6 @@ def buscar_automovil(request):
 def base(request):
 
     return render(request, "Appautomoviles/base.html", {})
+
+def novedades(request):
+    return render(request, 'Appautomoviles/novedades.html')
