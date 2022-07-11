@@ -178,7 +178,7 @@ def automovil(request):
         search = request.POST["search"]
 
         if search != "":
-            automovil = Automovil.objects.filter(marca__icontains=search).values()
+            automovil = Automovil.objects.filter( Q(marca__icontains=search) | Q(anio__icontains=search) | Q(tipo__icontains=search) ).values()  #(marca__icontains=search).values()
 
             return render(request,"Appautomoviles/automovil.html",{"automovil":automovil, "search":True, "busqueda":search})
 
@@ -360,7 +360,7 @@ def buscar_automovil(request):
 
         marca = request.POST["marca"]
 
-        automoviles = Automovil.objects.filter(marca__icontains=marca) 
+        automoviles = Automovil.objects.filter(marca__icontains=marca).values()
 
         return render(request, "Appautomoviles/buscar_automovil.html", {"automoviles": automoviles})
 
