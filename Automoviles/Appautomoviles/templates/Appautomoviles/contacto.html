@@ -1,0 +1,79 @@
+{% extends "Appautomoviles/base.html" %}
+{% load static %}
+
+{% block tituloPagina %}
+Contacto - App Automoviles
+{% endblock %}
+
+{% block contenidoPagina %}
+
+  </head>
+  <body>
+    <nav class="navbar navbar-dark bg-primary">
+      <div class="container">
+        <div class="container-fluid">
+          
+          <a class="navbar-brand" href="{% url 'index' %}">Lugobu Cars</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-5">
+        </br>
+          <h1 class="mb-5"><b>Contactanos</b></h1>
+          <form action="https://formsubmit.co/alanbourre9@hotmail.com" method="POST">
+            <div class="mb-3">
+              <label class="form-label">Nombre Completo</label>
+              <input name="name" type="text" class="form-control" required />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Dirección de Email</label>
+              <input name="email" type="email" class="form-control" required />
+              <div id="emailHelp" class="form-text">
+                No te preocupes, no lo compartiremos con nadie más.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Teléfono (opcional)</label>
+              <input name="phone" \type="tel" class="form-control" />
+              <div id="phoneHelp" class="form-text">
+                Si prefieres hablar con una persona directamente.
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label">Tu mensaje</label>
+              <textarea
+                name="message"
+                class="form-control"
+                rows="3"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Enviar</button>
+          </form>
+          <br><br>
+        </div>
+        
+
+        <div class="col-1"></div>
+
+        <div class="col-6 position-relative">
+          <img
+            src="{% static 'assets/mail.svg' %}"
+            class="w-75 position-absolute top-50 start-50 translate-middle"
+          />
+        </div>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
+
+{% endblock %}

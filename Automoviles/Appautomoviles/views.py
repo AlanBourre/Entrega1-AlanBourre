@@ -57,6 +57,10 @@ def logout_request(request):
     logout(request)
     return redirect("index")
 
+def contacto(request):
+
+    return render(request, 'Appautomoviles/contacto.html')
+
 @login_required
 def editar_perfil(request):
 

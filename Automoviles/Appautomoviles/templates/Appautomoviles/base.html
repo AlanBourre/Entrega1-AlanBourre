@@ -32,7 +32,6 @@
                             <li class="nav-item"><a class="nav-link" href="{% url 'cliente' %}">Clientes</a></li>
                             {% endif %}
                         {% endif %}                        
-                        <li class="nav-item"><a class="nav-link" href="{% url 'about' %}">Sobre Nosotros</a></li>
                         {% if user.is_authenticated %}
                             {% if user.avatar.imagen.url %}
                                 <img class="rounded" src="{{ user.avatar.imagen.url }}" alt="" srcset="" style="height: 40px;">
@@ -66,8 +65,15 @@
         {% endblock %}
 
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
+        <footer class="bg-black text-center py-5">
+            <div class="container px-5">
+                <div class="text-white-50 small">
+                    <div class="mb-2">Appautomoviles &copy; Your Website 2022</p></div>
+                    <a href="{% url 'about' %}" class="text-reset">Sobre nosotros</a>
+                    <span class="mx-1">&middot;</span>
+                    <a href="{% url 'contacto' %}" class="text-reset">Contacto</a>
+                </div>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
