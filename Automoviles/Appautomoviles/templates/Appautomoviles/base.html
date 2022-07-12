@@ -26,7 +26,7 @@
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'novedades' %}">Novedades</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{% url 'automovil' %}">Automoviles</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'automovil' %}">Automóviles</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'personal' %}">Personal</a></li>
                         {% if user.is_authenticated %}
                             {% if user.is_staff %}
@@ -35,7 +35,7 @@
                         {% endif %}                        
                         {% if user.is_authenticated %}
                             {% if user.avatar.imagen.url %}
-                                <img class="rounded" src="{{ user.avatar.imagen.url }}" alt="" srcset="" style="height: 40px;">
+                                <img class="rounded" src="{{ user.avatar.imagen.url }}" alt="" srcset="" style="height: 50px;">
                             {% else %}
                                 <i class="bi bi-person-circle text-light my-2"></i>
                             {% endif %}
