@@ -73,8 +73,7 @@ def editar_perfil(request):
 
         if form.is_valid():
 
-            info = form.cleaned_data
-            user.username = info["username"]
+            info = form.cleaned_data           
             user.email = info["email"]
             user.first_name = info["first_name"]
             user.last_name = info["last_name"]
@@ -85,7 +84,7 @@ def editar_perfil(request):
             return redirect("index")
 
     else:
-        form = UserEditForm(initial = {"email":user.email,"username":user.username, "first_name": user.first_name, "last_name": user.last_name})
+        form = UserEditForm(initial = {"email":user.email, "first_name": user.first_name, "last_name": user.last_name})
 
     return render(request, "Appautomoviles/editar_perfil.html", {"form": form}) 
 
@@ -386,3 +385,4 @@ def base(request):
 
 def novedades(request):
     return render(request, 'Appautomoviles/novedades.html')
+
