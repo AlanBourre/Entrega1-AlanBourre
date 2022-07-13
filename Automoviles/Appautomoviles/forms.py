@@ -24,11 +24,12 @@ class FormPersonal(ModelForm):
 class UserRegisterForm(UserCreationForm):
 
     avatar = forms.ImageField(label="Avatar", required=False)
+    username = forms.CharField(label="Nombre de usuario")
     email= forms.EmailField(label="Email")
     password1 = forms.CharField(label="Contraseña", widget= forms.PasswordInput)
     password2 = forms.CharField(label="Confirmar contraseña", widget= forms.PasswordInput)
-    first_name = forms.CharField(label="Nombre")
-    last_name = forms.CharField(label="Apellido")
+    first_name = forms.CharField(label="Nombre", required=False)
+    last_name = forms.CharField(label="Apellido", required=False)
 
     class Meta:
         model = User
@@ -39,6 +40,7 @@ class UserRegisterForm(UserCreationForm):
 class UserEditForm(UserCreationForm):
 
     avatar = forms.ImageField(label="Avatar", required=False)
+    username = forms.CharField(label="Nombre de usuario", required=False)
     email = forms.EmailField(label="Email")
     password1 = forms.CharField(label="Contraseña", widget= forms.PasswordInput, required= False)
     password2 = forms.CharField(label="Confirmar contraseña", widget= forms.PasswordInput, required= False) 
@@ -47,7 +49,7 @@ class UserEditForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ["avatar","email", "password1", "password2", "first_name", "last_name"]
+        fields = ["avatar","username","email", "password1", "password2", "first_name", "last_name"]
 
         help_texts = {k: "" for k in fields}    
 

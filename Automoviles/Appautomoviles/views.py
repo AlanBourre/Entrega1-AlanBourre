@@ -8,6 +8,7 @@ from django.contrib.auth import login, logout, authenticate
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
+from django.contrib import messages
 
 def entrada(request):
     return redirect("index")
@@ -73,6 +74,7 @@ def editar_perfil(request):
         if form.is_valid():
 
             info = form.cleaned_data
+            user.username = info["username"]
             user.email = info["email"]
             user.first_name = info["first_name"]
             user.last_name = info["last_name"]
@@ -83,7 +85,7 @@ def editar_perfil(request):
             return redirect("index")
 
     else:
-        form = UserEditForm(initial = {"email":user.email, "first_name": user.first_name, "last_name": user.last_name})
+        form = UserEditForm(initial = {"email":user.email,"username":user.username, "first_name": user.first_name, "last_name": user.last_name})
 
     return render(request, "Appautomoviles/editar_perfil.html", {"form": form}) 
 
@@ -180,9 +182,13 @@ def automovil(request):
     if request.method == "POST":
 
         search = request.POST["search"]
+        
+        # tipos = [x[1].lower() for x in Automovil.TIPOS]
+        
+        # id_tipo = tipos.index(search) +1
 
         if search != "":
-            automovil = Automovil.objects.filter( Q(marca__icontains=search) | Q(anio__icontains=search) | Q(tipo__icontains=search) ).values()  #(marca__icontains=search).values()
+            automovil = Automovil.objects.filter( Q(marca__icontains=search) | Q(anio__icontains=search)).values() #| Q(tipo = id_tipo) ) .values()  #(marca__icontains=search).values()
 
             return render(request,"Appautomoviles/automovil.html",{"automovil":automovil, "search":True, "busqueda":search})
 

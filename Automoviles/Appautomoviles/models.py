@@ -18,7 +18,7 @@ class Automovil(models.Model):
         (1, "Nuevo"),
         (2, "Usado"),
     )
-    condicion = models.PositiveSmallIntegerField("Condicion", choices=CONDICION)
+    condicion = models.PositiveSmallIntegerField("Condición", choices=CONDICION)
     anio = models.CharField("Año", max_length=4)
     kms = models.FloatField("Kilometros")
     precio = models.FloatField("Precio $")
@@ -31,7 +31,7 @@ class Personal(models.Model):
     nombre = models.CharField("Nombre", max_length=30)
     apellido = models.CharField("Apellido", max_length=30)
     email = models.EmailField(blank=True, null=True)
-    telefono = models.CharField("Telefono", max_length=15) #AGREGADO
+    telefono = models.CharField("Teléfono", max_length=15) #AGREGADO
 
     class Meta:
         verbose_name_plural = "Personal"
@@ -41,7 +41,7 @@ class Cliente(models.Model):
     nombre = models.CharField("Nombre", max_length=30)
     apellido = models.CharField("Apellido", max_length=30)
     cuil = models.CharField("CUIL", max_length=13)
-    direccion = models.CharField("Direccion", max_length=50)
+    direccion = models.CharField("Dirección", max_length=50)
     dni = models.CharField("DNI", max_length=8)
     email = models.EmailField(blank=True, null=True)
 
