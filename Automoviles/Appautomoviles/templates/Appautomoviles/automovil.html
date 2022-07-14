@@ -2,7 +2,7 @@
 {% load static %}
 
 {% block tituloPagina %}
-Automoviles - App Automoviles
+Automóviles - App Automoviles
 {% endblock %}
 
 {% block contenidoPagina %}
@@ -48,7 +48,7 @@ Automoviles - App Automoviles
 <section class="bg-light py-5">
     <div class="container px-5">
         <div class="row gx-5 justify-content-center">
-            <div class="col-lg-9">
+            <div class="col-lg-10">
                     <p><h1 class="text-center"><b>Automóviles:</b></h1></p>
                     <br>
                     <div class="row gx-5 justify-content-center">
@@ -85,8 +85,9 @@ Automoviles - App Automoviles
                                 <td> {{auto.kms}} </td>
                                 <td> ${{auto.precio}} </td>
                                 <td>
-                                    <a href="{% url 'editar_automovil' auto.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
-                                    <a href="{% url 'eliminar_automovil' auto.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
+                                  <a href="{% url 'automovil_detail' auto.id %}" class="text-success badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Ver</a>
+                                  <a href="{% url 'editar_automovil' auto.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
+                                  <a href="{% url 'eliminar_automovil' auto.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
                                 </td>
                             </tr>
                             {% endfor %}

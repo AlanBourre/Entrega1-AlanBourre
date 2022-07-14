@@ -3,12 +3,16 @@ from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.views.generic import ListView
+from django.views.generic.detail import DetailView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
+from django.core.paginator import Paginator
 
 def entrada(request):
     return redirect("index")
@@ -87,7 +91,6 @@ def editar_perfil(request):
         form = UserEditForm(initial = {"email":user.email, "first_name": user.first_name, "last_name": user.last_name})
 
     return render(request, "Appautomoviles/editar_perfil.html", {"form": form}) 
-
 
 
 @login_required
@@ -187,11 +190,12 @@ def automovil(request):
         # id_tipo = tipos.index(search) +1
 
         if search != "":
-            automovil = Automovil.objects.filter( Q(marca__icontains=search) | Q(anio__icontains=search)).values() #| Q(tipo = id_tipo) ) .values()  #(marca__icontains=search).values()
+            automovil = Automovil.objects.filter( Q(marca__icontains=search) | Q(anio__icontains=search)).values() #| Q(tipo = id_tipo) ) .values()
 
             return render(request,"Appautomoviles/automovil.html",{"automovil":automovil, "search":True, "busqueda":search})
 
     automovil = Automovil.objects.all()
+    
 
     return render(request,"Appautomoviles/automovil.html",{"automovil":automovil})
 
@@ -385,4 +389,17 @@ def base(request):
 
 def novedades(request):
     return render(request, 'Appautomoviles/novedades.html')
+
+
+class AutomovilesList(ListView):
+
+    model = Automovil
+    template_name = "Appautomoviles/automoviles_list.html"
+
+class AutomovilDetail(DetailView):
+
+    model = Automovil
+    template_name = "Appautomoviles/automovil_detail.html"
+
+
 

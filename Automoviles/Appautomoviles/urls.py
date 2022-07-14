@@ -12,6 +12,9 @@ urlpatterns = [
     path("novedades", views.novedades, name="novedades"),
     path("contacto", views.contacto, name="contacto"),
 
+    path('automovil/list', views.AutomovilesList.as_view(), name="automovil_list"),
+    path(r'^(?P<pk>\d+)$', views.AutomovilDetail.as_view(), name="automovil_detail"),
+
 
     path("personal/", views.personal, name="personal"),
     path("cliente/", views.cliente, name="cliente"),

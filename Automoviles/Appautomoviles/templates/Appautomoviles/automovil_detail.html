@@ -1,0 +1,29 @@
+{% extends "Appautomoviles/base.html" %}
+{% load static %}
+
+{% block tituloPagina %}
+Novedades - App Automoviles
+{% endblock %}
+
+{% block contenidoPagina %}
+
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8">
+              <br>
+                <p><h1 class="text-center"><b>Detalles del automóvil:</b></h1></p>
+                <p><h3 class="text-center"><b>{{ automovil.marca }} {{ automovil.modelo }}</b></h3></p>
+                <p><h5 class="text-center">Tipo: {{automovil.get_tipo_display}}</h5></p>
+                <p><h5 class="text-center">{{automovil.color}}</h5></p>
+                <p><h5 class="text-center">{{automovil.get_condicion_display}}</h5></p>
+                <p><h5 class="text-center">{{automovil.anio}}</h5></p>
+                <p><h5 class="text-center">{{automovil.kms}}</h5></p>
+                <p><h5 class="text-center">${{automovil.precio}}</h5></p>
+            </div>
+        </div>
+    </div>
+</section>
+
+{% endblock %}
+
