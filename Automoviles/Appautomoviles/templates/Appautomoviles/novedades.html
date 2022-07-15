@@ -6,51 +6,17 @@ Novedades - App Automoviles
 {% endblock %}
 
 {% block contenidoPagina %}
+<br><br><br>
 
-<section class="bg-light py-5">
-    <div class="container px-5">
-        <div class="row gx-5 justify-content-center">
-            <div class="col-lg-8">
+<p><h1 class="text-center"><b>Novedades</b></h1></p>
+<div class="card">
+  <img src="https://http2.mlstatic.com/D_NQ_NP_805620-MLA47397684913_092021-W.jpg" class="card-img-top" alt="..." style="width: 500px;">
 
-              <br>
-                <p><h1 class="text-center"><b>Novedades</b></h1></p>
-                <p><h3 class="text-center"><b>Nuevos Ingresos:</b></h3></p>              
-                <figure class="text-center">
-                    <blockquote class="blockquote">
-                        <br>
-                      <p><img src="https://http2.mlstatic.com/D_NQ_NP_805620-MLA47397684913_092021-W.jpg" class="rounded float-start" alt="..." style="height: 200px;"></p>
-                      <br><br>
-                    </blockquote>
-                    <figcaption class="blockquote-footer">
-                      Nuevo ingreso de Toyota Hilux 2022.
-                      Para más información ingresa <a href="{% url 'automovil' %}"> <strong>aquí</strong></a>.</cite>
-                    </figcaption>
-                </figure>
-                <br><br><br><br><br>               
-                <figure class="text-center">
-                    <blockquote class="blockquote">                  
-                      <p><img src="https://rodatiautos.ar/images/listings/2022-03/ebcd7f85-1646390976-505.jpg" class="rounded float-start" alt="..." style="height: 227px;"></p>
-                      <br><br><br>
-                    </blockquote>
-                    <figcaption class="blockquote-footer">
-                      Nuevo ingreso de Ford Fiesta 2019.
-                      Para más información ingresa <a href="{% url 'automovil' %}"> <strong>aquí</strong></a>.</cite>
-                    </figcaption>
-                </figure>
-                <br><br><br><br><br><br>             
-                <figure class="text-center"> 
-                    <blockquote class="blockquote">                   
-                      <p><img src="https://http2.mlstatic.com/D_NQ_NP_639517-MLA50406237901_062022-W.jpg" class="rounded float-start" alt="..." style="height: 207px;"></p>
-                      <br><br><br>
-                    </blockquote>
-                    <figcaption class="blockquote-footer">
-                      Nuevo ingreso de Volkswagen Golf GTI 2018.
-                      Para más información ingresa <a href="{% url 'automovil' %}"><strong>aquí</strong></a>.</cite>
-                    </figcaption>
-                </figure>
+  <div class="card-body">
+    <h4 class="card-title">Nuevo ingreso de Toyota Hilux 2022.</h4>
+    <h6><p class="card-text">Para más información ingresá</p></h6>
+    <a href="{% url 'automovil' %}" class="btn btn-primary"> <strong>Aquí</strong></a>
+  </div>
+</div>
 
-            </div>
-        </div>
-    </div>
-</section>
 {% endblock %}
