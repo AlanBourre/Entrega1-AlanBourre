@@ -50,8 +50,10 @@ def login_request(request):
                 login(request, user)
                 return redirect("index")
             else:
+                messages.error(request, "Usuario o contraseña incorrectos")
                 return redirect("login")
         else:
+            messages.error(request, "Usuario o contraseña incorrectos")
             return redirect("login")
 
     form= AuthenticationForm()
@@ -312,7 +314,7 @@ def editar_automovil(request, auto_id):
     
     if request.method == "POST":
         
-        formulario = FormAutomovil(request.POST)
+        formulario = FormAutomovil(request.POST, request.FILES)
 
         if formulario.is_valid():
 
@@ -326,12 +328,13 @@ def editar_automovil(request, auto_id):
             automovil.anio = info_automovil["anio"]
             automovil.kms = info_automovil["kms"]
             automovil.precio = info_automovil["precio"]
+            automovil.imagen = info_automovil["imagen"]
             automovil.save()
 
             return redirect("automovil")
 
     #get
-    formulario = FormAutomovil(initial= {"marca": automovil.marca, "modelo": automovil.modelo, "tipo": automovil.tipo,"color": automovil.color,"condicion": automovil.condicion,"anio": automovil.anio, "kms": automovil.kms, "precio": automovil.precio})
+    formulario = FormAutomovil(initial= {"marca": automovil.marca, "modelo": automovil.modelo, "tipo": automovil.tipo,"color": automovil.color,"condicion": automovil.condicion,"anio": automovil.anio, "kms": automovil.kms, "precio": automovil.precio,"imagen": automovil.imagen})
     contexto = {"form": formulario}
 
     return render(request, "Appautomoviles/formulario_automovil.html", contexto)

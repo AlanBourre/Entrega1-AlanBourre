@@ -13,6 +13,10 @@ Login - App Automoviles
 <form method="post">
     {% csrf_token %}
 
+    <!-- {% for  message in messages %}
+        <div class="alert alert-{{message.type}} "> {{message.text}} </div>
+    {% endfor %} -->
+
     <form>
         <div class="mb-3 d-flex flex-column align-items-center">
             {{ form }}

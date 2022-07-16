@@ -22,6 +22,7 @@ class Automovil(models.Model):
     anio = models.CharField("Año", max_length=4)
     kms = models.FloatField("Kilometros")
     precio = models.FloatField("Precio $")
+    imagen = models.ImageField(upload_to="imagenes/", blank=True, null=True)
 
     class Meta:
         verbose_name_plural = "Automoviles"

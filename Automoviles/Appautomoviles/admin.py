@@ -3,7 +3,7 @@ from django.contrib import admin
 from . models import *
 
 class AutomovilAdmin(admin.ModelAdmin):
-    list_display = ("marca", "modelo", "tipo", "color","condicion","anio", "kms", "precio")
+    list_display = ("marca", "modelo", "tipo", "color","condicion","anio", "kms", "precio", "imagen")
     search_fields = ("marca", "precio")
 
 class PersonalAdmin(admin.ModelAdmin):
