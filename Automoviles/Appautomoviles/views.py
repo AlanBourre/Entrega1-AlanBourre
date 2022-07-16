@@ -6,13 +6,14 @@ from django.urls import reverse
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.contrib.auth.forms import AuthenticationForm , UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm , UserCreationForm, PasswordChangeForm
 from django.contrib.auth import login, logout, authenticate
 from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
 from django.core.paginator import Paginator
+from django.contrib.auth import update_session_auth_hash
 
 def entrada(request):
     return redirect("index")
@@ -92,6 +93,29 @@ def editar_perfil(request):
 
     return render(request, "Appautomoviles/editar_perfil.html", {"form": form}) 
 
+@login_required
+def editar_password(request):
+
+    user = request.user
+
+    if request.method == "POST":
+        
+        form = PasswordChangeForm(user, request.POST)
+
+        if form.is_valid():
+
+            form.save()
+            update_session_auth_hash(request, form.user)
+
+            messages.success(request, ("Your password has been changed successfully!"))
+            
+
+            return redirect("index")
+
+    else:
+        form = PasswordChangeForm(user)
+
+    return render(request, "Appautomoviles/editar_password.html", {"form": form}) 
 
 @login_required
 def agregar_avatar(request):
@@ -104,8 +128,9 @@ def agregar_avatar(request):
 
             user = User.objects.get(username=request.user.username) # usuario con el que estamos loggueados
 
-            avatar = Avatar(usuario=user, imagen=form.cleaned_data["imagen"])
-
+            info = form.cleaned_data
+            avatar = Avatar.objects.get(usuario=user)
+            avatar.imagen = info["imagen"]
             avatar.save()
 
             # avatar = Avatar()
