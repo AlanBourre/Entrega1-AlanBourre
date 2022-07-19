@@ -86,7 +86,7 @@ def editar_perfil(request):
             user.last_name = info["last_name"]
 
             user.save()
-            
+            messages.success(request, "Tu perfil fue actualizado correctamente!")
 
             return redirect("index")
 
@@ -109,15 +109,15 @@ def editar_password(request):
             form.save()
             update_session_auth_hash(request, form.user)
 
-            messages.success(request, ("Your password has been changed successfully!"))
-            
+            messages.success(request, ("Tu contraseña fue actualizada correctamente!"))          
 
             return redirect("index")
 
     else:
         form = PasswordChangeForm(user)
-
+        
     return render(request, "Appautomoviles/editar_password.html", {"form": form}) 
+    
 
 @login_required
 def agregar_avatar(request):
@@ -139,6 +139,7 @@ def agregar_avatar(request):
             # avatar.usuario = request.user
             # avatar.imagen = form.cleaned_data["imagen"]
             # avatar.save()
+            messages.success(request, "Tu avatar fue actualizado correctamente!")
 
             return redirect("index")
 

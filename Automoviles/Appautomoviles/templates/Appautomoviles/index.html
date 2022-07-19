@@ -7,7 +7,6 @@ Inicio - App Automoviles
 
 {% block contenidoPagina %}
 
-
 <!-- Header-->
 <header class="bg-dark py-5" style="background: url(https://fondosmil.com/fondo/21960.jpg) no-repeat center center / cover;">
                 <div class="container px-5">
@@ -24,6 +23,15 @@ Inicio - App Automoviles
                     </div>
                 </div>
 </header>
+
+{% if messages %}
+    {% for message in messages %}
+        <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
+            {{ message }}
+        </div>
+    {% endfor %}
+{% endif %}
+
 
 <!-- Contact section-->
 <section class="bg-light py-5">
