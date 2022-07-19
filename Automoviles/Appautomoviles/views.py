@@ -343,7 +343,7 @@ def editar_automovil(request, auto_id):
     formulario = FormAutomovil(initial= {"marca": automovil.marca, "modelo": automovil.modelo, "tipo": automovil.tipo,"color": automovil.color,"condicion": automovil.condicion,"anio": automovil.anio, "kms": automovil.kms, "precio": automovil.precio,"imagen": automovil.imagen})
     contexto = {"form": formulario}
 
-    return render(request, "Appautomoviles/formulario_automovil.html", contexto)
+    return render(request, "Appautomoviles/editar_automovil.html", contexto)
 
 @staff_member_required
 def editar_cliente(request, client_id):
@@ -372,7 +372,7 @@ def editar_cliente(request, client_id):
     formulario = FormCliente(initial= {"nombre": cliente.nombre, "apellido": cliente.apellido, "cuil": cliente.cuil,"direccion": cliente.direccion, "dni": cliente.dni, "email": cliente.email})
     contexto = {"form": formulario}
 
-    return render(request, "Appautomoviles/formulario_cliente.html", contexto)
+    return render(request, "Appautomoviles/editar_cliente.html", contexto)
 
 @staff_member_required
 def editar_personal(request, persona_id):
@@ -399,7 +399,7 @@ def editar_personal(request, persona_id):
     formulario = FormPersonal(initial= {"nombre": personal.nombre, "apellido": personal.apellido, "email": personal.email, "telefono": personal.telefono})
     contexto = {"form": formulario}
 
-    return render(request, "Appautomoviles/formulario_personal.html", contexto)
+    return render(request, "Appautomoviles/editar_personal.html", contexto)
 
 def buscar_automovil(request):
 
