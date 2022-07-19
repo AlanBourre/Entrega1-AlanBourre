@@ -48,6 +48,7 @@ def login_request(request):
 
             if user is not None:
                 login(request, user)
+                messages.success(request, f"Bienvenido {user.username}")
                 return redirect("index")
             else:
                 messages.error(request, "Usuario o contraseña incorrectos")
@@ -166,8 +167,9 @@ def register_request(request):
 
             if user is not None:
                 login(request, user)
+                messages.success(request, "Usuario creado correctamente!")
                 return redirect("index")
-            else:
+            else:                
                 return redirect("login")            
 
         return render(request, "Appautomoviles/register.html", {"form": form})
