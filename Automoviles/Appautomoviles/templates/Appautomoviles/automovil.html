@@ -22,13 +22,13 @@ Automóviles - App Automoviles
         </div>
       </div>
       <div class="carousel-item">
-        <img src="https://www.autoweb.com.ar/wp-content/uploads/2020/09/audi_q5_sportback_45_tfsi_quattro_s_line_15_067e04660a1906ba.jpg" class="d-block w-100" alt="..."style="height: 850px;">
+        <img src="https://3.bp.blogspot.com/-AD8PcDUqYtQ/WNxBUPdRhzI/AAAAAAAA5Ug/olTF-wrjalsT3R98tLvthmdWgh3ZO_aXQCLcB/s1600/Novo-Audi-Q5-2018%2B%25282%2529.jpg" class="d-block w-100" alt="..."style="height: 750px;">
         <div class="carousel-caption d-none d-md-block">
             <h3>LUGOBO CARS</h3>
         </div>
       </div>
       <div class="carousel-item">
-        <img src="https://images.kavak.services/images/20905/mercedes-benz-clase-a-a200-style2016-frontal-lateral-piloto-lejana-1596488345193.jpg" class="d-block w-100" alt="..." style="height: 800px;">
+        <img src="https://images.kavak.services/images/20905/mercedes-benz-clase-a-a200-style2016-frontal-lateral-piloto-lejana-1596488345193.jpg" class="d-block w-100" alt="..." style="height: 750px;">
         <div class="carousel-caption d-none d-md-block">
             <h3>LUGOBO CARS</h3>
         </div>
@@ -85,9 +85,13 @@ Automóviles - App Automoviles
                                 <td> {{auto.kms}} </td>
                                 <td> ${{auto.precio}} </td>
                                 <td>
-                                  <a href="{% url 'automovil_detail' auto.id %}" class="text-success badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Ver</a>
+                                  <a href="{% url 'ver_automovil' auto.id %}" class="text-success badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Ver</a>
+                                  {% if user.is_authenticated %}
+                                  {% if user.is_staff %}
                                   <a href="{% url 'editar_automovil' auto.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
                                   <a href="{% url 'eliminar_automovil' auto.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
+                                  {% endif %}
+                                  {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
@@ -96,6 +100,8 @@ Automóviles - App Automoviles
         </div>
     </div>
 <br>
+
+{% comment %}
     <nav aria-label="Page navigation example">
       <ul class="pagination justify-content-end px-5">
         <li class="page-item"><a class="page-link" href="#">Anterior</a></li>
@@ -104,6 +110,7 @@ Automóviles - App Automoviles
         <li class="page-item"><a class="page-link" href="#">Siguiente</a></li>
       </ul>
     </nav>
+{% endcomment %}
 
 </section>
 

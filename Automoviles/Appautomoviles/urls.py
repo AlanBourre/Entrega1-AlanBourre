@@ -13,8 +13,8 @@ urlpatterns = [
     path("novedades", views.novedades, name="novedades"),
     path("contacto", views.contacto, name="contacto"),
 
-    path('automovil/list', views.AutomovilesList.as_view(), name="automovil_list"),
-    path(r'^(?P<pk>\d+)$', views.AutomovilDetail.as_view(), name="automovil_detail"),
+    # path('automovil/list', views.AutomovilesList.as_view(), name="automovil_list"),
+    # path(r'^(?P<pk>\d+)$', views.AutomovilDetail.as_view(), name="automovil_detail"),
 
 
     path("personal/", views.personal, name="personal"),
@@ -29,6 +29,8 @@ urlpatterns = [
     path("eliminar_cliente/<client_id>", views.eliminar_cliente, name="eliminar_cliente"),
     path("editar_cliente/<client_id>", views.editar_cliente, name="editar_cliente"),
     path("eliminar_personal/<persona_id>", views.eliminar_personal, name="eliminar_personal"),
-    path("editar_personal/<persona_id>", views.editar_personal, name="editar_personal"),    
+    path("editar_personal/<persona_id>", views.editar_personal, name="editar_personal"),  
+    path("agregar_comentario/<auto_id>", views.agregar_comentario, name="agregar_comentario"),
+    path("ver_automovil/<auto_id>", views.ver_automovil, name="ver_automovil"),  
     #path("base/", views.base),
 ]

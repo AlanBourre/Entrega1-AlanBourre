@@ -3,8 +3,8 @@ from .models import *
 from .forms import *
 from django.http import HttpResponseRedirect
 from django.urls import reverse
-from django.views.generic import ListView
-from django.views.generic.detail import DetailView
+# from django.views.generic import ListView
+# from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth.forms import AuthenticationForm , UserCreationForm, PasswordChangeForm
 from django.contrib.auth import login, logout, authenticate
@@ -226,6 +226,12 @@ def automovil(request):
 
     return render(request,"Appautomoviles/automovil.html",{"automovil":automovil})
 
+def ver_automovil(request, auto_id):
+
+  automovil = Automovil.objects.get(id=auto_id)
+  
+  return render(request, "Appautomoviles/ver_automovil.html", {"automovil":automovil})
+
 @staff_member_required
 def formulario_cliente(request):
 
@@ -411,6 +417,27 @@ def buscar_automovil(request):
 
         return render(request, "Appautomoviles/buscar_automovil.html", {"automoviles": automoviles})
 
+@login_required
+def agregar_comentario(request,auto_id):
+
+    user = request.user
+    automovil = Automovil.objects.get(id=auto_id)
+
+    if request.method == "POST":
+
+      formulario = FormComentario(request.POST)
+
+      if formulario.is_valid():
+        info = formulario.cleaned_data
+      
+        comentario = Comentario(autor=user, automovil=automovil, comentario=info["comentario"])
+        comentario.save()
+        
+        return redirect("ver_automovil",auto_id)
+    else:
+      form = FormComentario()
+      return render(request, "Appautomoviles/agregar_comentario.html", {"form":form})
+
 def base(request):
 
     return render(request, "Appautomoviles/base.html", {})
@@ -419,15 +446,15 @@ def novedades(request):
     return render(request, 'Appautomoviles/novedades.html')
 
 
-class AutomovilesList(ListView):
+# class AutomovilesList(ListView):
 
-    model = Automovil
-    template_name = "Appautomoviles/automoviles_list.html"
+#     model = Automovil
+#     template_name = "Appautomoviles/automoviles_list.html"
 
-class AutomovilDetail(DetailView):
+# class AutomovilDetail(DetailView):
 
-    model = Automovil
-    template_name = "Appautomoviles/automovil_detail.html"
+#     model = Automovil
+#     template_name = "Appautomoviles/automovil_detail.html"
 
 
 

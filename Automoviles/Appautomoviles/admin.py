@@ -15,9 +15,14 @@ class ClienteAdmin(admin.ModelAdmin):
 class AvatarAdmin(admin.ModelAdmin):
     list_display = ("usuario", "imagen")
 
+class ComentarioAdmin(admin.ModelAdmin):
+    list_display = ('autor','automovil','comentario','fecha')
+    search_fields = ('autor','automovil','comentario','fecha')
+
 
 
 admin.site.register(Automovil, AutomovilAdmin)
 admin.site.register(Personal, PersonalAdmin)
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Avatar, AvatarAdmin)
+admin.site.register(Comentario,ComentarioAdmin)

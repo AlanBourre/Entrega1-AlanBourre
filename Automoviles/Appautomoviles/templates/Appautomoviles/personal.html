@@ -31,7 +31,11 @@ Personal - App Automoviles
                             <td>Apellido</td>                           
                             <td>Email</td> 
                             <td>Teléfono</td>
-                            <td>Acciones</td>           
+                            {% if user.is_authenticated %}
+                            {% if user.is_staff %}
+                            <td>Acciones</td>
+                            {% endif %}
+                            {% endif %}           
                         </thead>
                         {% for persona in personal %}
                         <tr> <!--- tr = table row -->
@@ -40,8 +44,12 @@ Personal - App Automoviles
                             <td> {{persona.email}} </td>  
                             <td> {{persona.telefono}} </td>  
                             <td>
+                                {% if user.is_authenticated %}
+                                {% if user.is_staff %}
                                 <a href="{% url 'editar_personal' persona.id %}" class="text-primary badge badge-primary text-decoration-none"> <i class="bi bi-pencil-square"></i> Editar</a>
                                 <a href="{% url 'eliminar_personal' persona.id %}" class="text-danger badge badge-danger text-decoration-none"> <i class="bi bi-x-square"></i> Eliminar</a>
+                                {% endif %}
+                                {% endif %}
                             </td>          
                         </tr>
                         {% endfor %}

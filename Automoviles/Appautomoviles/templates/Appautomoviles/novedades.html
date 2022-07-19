@@ -6,8 +6,74 @@ Novedades - App Automoviles
 {% endblock %}
 
 {% block contenidoPagina %}
-<br><br><br>
+<br><br><br><br>
+<h1 class="text-center"><b>Novedades:</b></h1>
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <br><br>
+      <div class="card" style="width: 25rem;">
+        <img src="https://images.kavak.services/images/163355/EXTERIOR-frontSidePilotNear-16430851715885.jpg?d=540x310" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">LUGOBO CARS</h5>
+          <b><p class="card-text">Nuevo ingreso de Toyota Hilux 2022.</p></b>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">0 Km.</li>
+          <li class="list-group-item">Modelo SRX.</li>
+          <li class="list-group-item">Año 2022.</li>
+        </ul>
+        <div class="card-body">
+         <center><a href="{% url 'automovil' %}" class="card-link btn btn-primary">MÁS INFO</a></center> 
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-4 offset-md-0">
+      <br><br>
+      <div class="card" style="width: 25rem;">
+        <img src="https://images.kavak.services/images/102895/gti-golf-a7-volkswagen-hatch-back-2018-exterior-frontsidepilotnear-16226033926607.jpg?d=540x310" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">LUGOBO CARS</h5>
+          <b><p class="card-text">Nuevo ingreso de Volkswagen Golf GTI.</p></b>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">50100 Kms.</li>
+          <li class="list-group-item">Modelo GTI.</li>
+          <li class="list-group-item">Año 2018.</li>
+        </ul>
+        <div class="card-body">
+         <center><a href="{% url 'automovil' %}" class="card-link btn btn-primary">MÁS INFO</a></center> 
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-1">
+      <br><br>
+      <div class="card" style="width: 25rem;">
+        <img src="https://images.kavak.services/images/21906/audi-a3-s-line2014-frontal-lateral-piloto-lejana-1600884340402.jpg?d=540x310" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">LUGOBO CARS</h5>
+          <b><p class="card-text">Nuevo ingreso de Audi A3.</p></b>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">86770 Kms.</li>
+          <li class="list-group-item">Modelo TFSI Sportback.</li>
+          <li class="list-group-item">Año 2014.</li>
+        </ul>
+        <div class="card-body">
+          <center><a href="{% url 'automovil' %}" class="card-link btn btn-primary">MÁS INFO</a></center> 
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<br><br>
+
+{% comment %}
 <div class="card" style="width: 25rem;">
   <img src="https://http2.mlstatic.com/D_NQ_NP_805620-MLA47397684913_092021-W.jpg" class="card-img-top" alt="...">
   <div class="card-body">
@@ -59,7 +125,7 @@ Novedades - App Automoviles
    <center><a href="{% url 'automovil' %}" class="card-link btn btn-primary">MÁS INFO</a></center> 
   </div>
 </div>
-
+{% endcomment %}
 
 {% comment %}
 <p><h1 class="text-center"><b>Novedades</b></h1></p>

@@ -1,0 +1,62 @@
+{% extends "Appautomoviles/base.html" %}
+{% load static %}
+
+{% block tituloPagina %}
+Detalles - App Automoviles
+{% endblock %}
+
+{% block contenidoPagina %}
+
+<section class="bg-light py-5">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-8">
+              <br><br>
+                <p><h1 class="text-center"><b>Detalles del automóvil:</b></h1></p>
+        <center><img class="rounded" src="{{ automovil.imagen.url }}" alt="" srcset="" style="height: 320px;"></center>        
+                <p><h3 class="text-center"><b>{{ automovil.marca }} {{ automovil.modelo }}</b></h3></p>
+                <p><h5 class="text-center">Tipo: {{automovil.get_tipo_display}}</h5></p>
+                <p><h5 class="text-center">Color: {{automovil.color}}</h5></p>
+                <p><h5 class="text-center">Condición: {{automovil.get_condicion_display}}</h5></p>
+                <p><h5 class="text-center">Año: {{automovil.anio}}</h5></p>
+                <p><h5 class="text-center">Kilometros: {{automovil.kms}}</h5></p>
+                <p><h5 class="text-center">Precio: ${{automovil.precio}}</h5></p>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<article class="container-flud mt-5 text-center">
+    <h2><b>Comentarios sobre este automóvil:</b></h2>
+    <div class="mt-5">
+      {% if not automovil.comments.all %} No hay comentarios todavía... {% else %}
+      <!---->
+      {% for comment in automovil.comments.all %}
+      <div class="card mt-4">
+        <div class="card-header"><b>{{comment.autor}}</b></div>
+        <div class="card-body">
+          <blockquote class="blockquote mb-0">
+            <p>{{comment.comentario}}</p>
+            <footer class="blockquote-footer">
+              <cite title="Source Title">{{comment.fecha}}</cite>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+    {%endfor%} 
+    {%endif%}
+    <div class="d-block text-center">
+      {% if user.is_authenticated %}
+      <a href="{% url 'agregar_comentario' automovil.id %}" class="btn btn-primary mt-5">Agregar un comentario</a>
+      {% else %}
+      <p class="mt-3">Iniciar sesión para dejar tu comentario</p>
+      <a class="btn btn-primary" href="{% url 'login' %}">Iniciar Sesión</a>
+      {% endif %}
+    </div>
+  </article>
+
+  <br><br>
+
+{% endblock %}

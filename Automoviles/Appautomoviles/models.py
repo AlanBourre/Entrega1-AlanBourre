@@ -54,3 +54,9 @@ class Avatar(models.Model):
 
     class Meta:
         verbose_name_plural = "Avatares"
+
+class Comentario(models.Model):
+  autor = models.ForeignKey(User,on_delete=models.CASCADE)
+  automovil = models.ForeignKey(Automovil, related_name="comments" ,on_delete=models.CASCADE)
+  comentario = models.TextField()
+  fecha = models.DateTimeField(auto_now_add=True)

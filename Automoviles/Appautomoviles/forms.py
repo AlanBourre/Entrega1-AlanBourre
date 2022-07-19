@@ -54,3 +54,8 @@ class FormAvatar(ModelForm):
     class Meta:
         model = Avatar
         fields = ['imagen']
+
+class FormComentario(ModelForm):
+    class Meta():
+        model = Comentario
+        fields = ("comentario",)
