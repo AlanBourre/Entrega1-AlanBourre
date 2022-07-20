@@ -12,7 +12,7 @@ from django.db.models import Q
 from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from django.contrib import messages
-from django.core.paginator import Paginator
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth import update_session_auth_hash
 
 def entrada(request):
@@ -225,7 +225,6 @@ def automovil(request):
             return render(request,"Appautomoviles/automovil.html",{"automovil":automovil, "search":True, "busqueda":search})
 
     automovil = Automovil.objects.all()
-    
 
     return render(request,"Appautomoviles/automovil.html",{"automovil":automovil})
 
