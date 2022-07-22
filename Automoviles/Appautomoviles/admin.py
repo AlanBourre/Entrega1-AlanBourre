@@ -21,6 +21,11 @@ class ComentarioAdmin(admin.ModelAdmin):
     list_display = ('autor','automovil','comentario','fecha')
     search_fields = ('autor','automovil','comentario','fecha')
 
+class VentaAdmin(admin.ModelAdmin):
+    list_display = ('nombre','email','telefono','datos_automovil','imagen')
+    search_fields = ('nombre','email','telefono','datos_automovil','imagen')
+
+
 
 
 admin.site.register(Automovil, AutomovilAdmin)
@@ -28,3 +33,4 @@ admin.site.register(Personal, PersonalAdmin)
 admin.site.register(Cliente, ClienteAdmin)
 admin.site.register(Avatar, AvatarAdmin)
 admin.site.register(Comentario,ComentarioAdmin)
+admin.site.register(Venta,VentaAdmin)

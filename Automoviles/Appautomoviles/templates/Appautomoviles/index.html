@@ -34,10 +34,11 @@ Inicio - App Automoviles
     {% endfor %}
 {% endif %}
 
+<br>
 
 <div class="card text-center">
     <div class="card-header">
-      Nuevo!
+     <b>Nuevo! <i class="bi bi-patch-exclamation"></i></b> 
     </div>
     <div class="card-body">
       <h1 class="card-title">Novedades</h1>
@@ -64,7 +65,7 @@ Inicio - App Automoviles
             <li class="list-group-item text-dark lead bg-light">Vendé tu auto a un excelente precio de forma segura.</li>
             <li class="list-group-item text-dark lead bg-light">Dejalo en parte de pago y llevate un auto certificado y con garantía.
           <br><br>   
-        <a href="" class="card-link btn btn-primary"></a>
+        <a href="{% url 'venta' %}" class="card-link btn btn-primary">Vendé tu auto <br> <i class="bi bi-key-fill"></i></a>
         </div>
       </div>
     </div>

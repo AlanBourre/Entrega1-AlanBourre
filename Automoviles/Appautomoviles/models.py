@@ -65,4 +65,5 @@ class Venta(models.Model):
     nombre = models.CharField("Nombre y apellido", max_length=50)
     email = models.EmailField(blank=True, null=True)
     telefono = models.CharField("Teléfono", max_length=15, blank=True, null=True)
-    datos_automovil = models.TextField() 
+    datos_automovil = models.TextField("(Marca / Modelo / Tipo / Color / Año / Kms)")
+    imagen = models.ImageField(upload_to="imagenes/", blank=True, null=True)

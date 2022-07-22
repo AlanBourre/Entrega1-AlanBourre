@@ -447,6 +447,26 @@ def base(request):
 def novedades(request):
     return render(request, 'Appautomoviles/novedades.html')
 
+@login_required
+def venta(request):
+
+    if request.method == "POST":  #POST
+
+        formulario = FormVenta(request.POST)
+
+        if formulario.is_valid():
+
+            formulario.save()
+            messages.success(request, ("Tu formulario fue enviado correctamente!"))
+
+            return HttpResponseRedirect(reverse("index"))
+
+
+    else:
+        formulario = FormVenta()
+    contexto = {"form": formulario}
+    return render(request, "Appautomoviles/venta.html", contexto)
+
 
 # class AutomovilesList(ListView):
 
