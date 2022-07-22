@@ -24,6 +24,8 @@ Inicio - App Automoviles
                 </div>
 </header>
 
+<br>
+
 {% if messages %}
     {% for message in messages %}
         <div class="alert {{ message.tags }} m-2" id="msg" role="alert">
@@ -33,6 +35,54 @@ Inicio - App Automoviles
 {% endif %}
 
 
+<div class="card text-center">
+    <div class="card-header">
+      Nuevo!
+    </div>
+    <div class="card-body">
+      <h1 class="card-title">Novedades</h1>
+      <p class="card-text">Enterate de los últimos ingresos!!</p>
+      <a href="{% url 'novedades' %}" class="btn btn-primary">Insepccionar</a>
+    </div>
+    <div class="card-footer text-muted">
+      Hace 1 día
+    </div>
+  </div>
+
+  <br>
+
+  <div class="card bg-light border-dark mb-3" style="max-width: 100rem;">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img src="https://www.elsoldemexico.com.mx/finanzas/odkatt-cuanto-debo-pagar-de-impuestos-si-compro-un-auto-en-2022.jpg/ALTERNATES/LANDSCAPE_1140/Cu%C3%A1nto%20debo%20pagar%20de%20impuestos%20si%20compro%20un%20auto%20en%202022.JPG" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h2 class="card-title display-5 fw-bolder text-primary mb-2">Cambia o vendé tu auto en solo 1 día</h2>
+          <ul class="list-group list-group-flush bg-light">
+            <li class="list-group-item text-dark lead bg-light">Cotizá tu auto y agendá una inspección en nuestra sede más cercana.</li>
+            <li class="list-group-item text-dark lead bg-light">Vendé tu auto a un excelente precio de forma segura.</li>
+            <li class="list-group-item text-dark lead bg-light">Dejalo en parte de pago y llevate un auto certificado y con garantía.
+          <br><br>   
+        <a href="" class="card-link btn btn-primary"></a>
+        </div>
+      </div>
+    </div>
+  </div>  
+
+{% comment %}
+<div class="card text-bg-dark">
+    <img src="https://img.remediosdigitales.com/777156/shake-hand-3677534_1920/450_1000.jpg" class="card-img" alt="...">
+    <div class="card-img-overlay">
+      <h5 class="card-title">Card title</h5>
+      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <p class="card-text">Last updated 3 mins ago</p>
+    </div>
+</div>
+{% endcomment %}
+
+
+{% comment %}
 <!-- Contact section-->
 <section class="bg-light py-5">
                 <div class="container px-5 my-5 px-5">
@@ -100,7 +150,7 @@ Inicio - App Automoviles
                     </div>
                 </div>
 </section>
-
+{% endcomment %}
 
 
 {% endblock %}

@@ -59,3 +59,8 @@ class FormComentario(ModelForm):
     class Meta():
         model = Comentario
         fields = ("comentario",)
+
+class FormVenta(ModelForm):
+    class Meta():
+        model = Venta
+        fields = ("nombre", "email", "telefono", "datos_automovil")

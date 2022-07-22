@@ -60,3 +60,9 @@ class Comentario(models.Model):
   automovil = models.ForeignKey(Automovil, related_name="comments" ,on_delete=models.CASCADE)
   comentario = models.TextField()
   fecha = models.DateTimeField(auto_now_add=True)
+
+class Venta(models.Model):
+    nombre = models.CharField("Nombre y apellido", max_length=50)
+    email = models.EmailField(blank=True, null=True)
+    telefono = models.CharField("Teléfono", max_length=15, blank=True, null=True)
+    datos_automovil = models.TextField() 
