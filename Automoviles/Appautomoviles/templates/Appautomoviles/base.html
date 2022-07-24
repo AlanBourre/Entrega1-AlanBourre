@@ -27,6 +27,7 @@
                         <li class="nav-item"><a class="nav-link" href="{% url 'index' %}">Inicio</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'novedades' %}">Novedades</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'automovil' %}">Automóviles</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{% url 'venta' %}">Vendé tu auto</a></li>
                         <li class="nav-item"><a class="nav-link" href="{% url 'personal' %}">Personal</a></li>
                         {% if user.is_authenticated %}
                             {% if user.is_staff %}
