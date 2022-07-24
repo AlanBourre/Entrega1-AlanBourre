@@ -1,4 +1,4 @@
-# Entrega1-Bourre-Lugano-GomezMoyano
+# EntregaFinal-Bourre-Lugano-GomezMoyano
 
 Proyecto Django - LUGOBO CARS - Venta de automoviles
 
