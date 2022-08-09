@@ -37,4 +37,18 @@ Siendo adminsitrador podes, en base a los autos, clientes y el personal:
 Link a video explicando el funcionamiento de la web:
 https://drive.google.com/file/d/10lTZjkUfiwHsE3714Ev58Q9u_rBSTDJ0/view?usp=sharing
 
+## Deploy en Heroku:
+
+Paso 1 - Instalar requirements
+
+* django
+* dj-database-url
+* gunicorn
+* whitenoise
+* psycopg2
+* Pillow
+
+comando: pip install -r requirements.txt
+
+
 
