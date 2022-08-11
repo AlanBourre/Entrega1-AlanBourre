@@ -91,7 +91,7 @@ DATABASES = {
     }
 }
 
-DATABASES["default"].update(db_from_env)
+DATABASES['default'].update(db_from_env)
 
 
 # Password validation
@@ -135,9 +135,8 @@ STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'static'),
 )
 
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
-STATIC_ROOT = os.path.join(BASE_DIR, "static_root")
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
 
 #ruta a media
 
